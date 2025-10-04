@@ -142,7 +142,7 @@ END
 
 IF ~~ THEN BEGIN 13
   SAY @81 /* I've seen some around. One of the other merchants, or maybe the priests, might have a bottle or two. */
-  IF ~~ THEN DO ~SetGlobal("ohb_barkskin_potion","oh8100",1)
+  IF ~~ THEN DO ~SetGlobal("ohb_barkskin_potion","ZB8100",1)
 ~ EXIT
 END
 

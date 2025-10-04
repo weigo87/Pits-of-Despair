@@ -89,7 +89,7 @@ END
 
 IF ~~ THEN BEGIN 7
   SAY @124 /* Well, if you're not staying, neither are we. We're not paid enough to deal with the likes of <PRO_HIMHER>! */
-  IF ~~ THEN DO ~SetGlobal("ohb_finale_arena","oh8300",2)
+  IF ~~ THEN DO ~SetGlobal("ohb_finale_arena","ZB8300",2)
 SetGlobal("ohb_finale_arena2_flee","global",1)
 EscapeArea()
 ActionOverride("ohbarzol",EscapeArea())

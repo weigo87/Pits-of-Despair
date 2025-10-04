@@ -39,7 +39,7 @@ THEN
         Wait(2)
         ActionOverride("ohbdenna",ReallyForceSpellRES("ohbraise",Myself))  // No such index
         Wait(1)
-        StartCutScene("ohbcutex")
+        StartCutScene("zbbcutex")
 END
 
 IF

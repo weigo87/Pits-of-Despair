@@ -325,20 +325,20 @@ IF ~~ THEN BEGIN 37
   IF ~~ THEN REPLY @1380 /* Actually, I'd rather not. */ GOTO 17
 END
 
-IF ~  Global("ohb_finale_arena","oh8200",4)
+IF ~  Global("ohb_finale_arena","ZB8200",4)
 ~ THEN BEGIN 38
   SAY @1381 /* You're a gift from the gods, <CHARNAME>. Thank you. I foresee a great battle before you. Take these if they'll help. I'll return to the pits and see that no surprises come at you from behind. */
   IF ~~ THEN DO ~ClearAllActions()
-SetGlobal("ohb_finale_arena","oh8200",5)
+SetGlobal("ohb_finale_arena","ZB8200",5)
 GiveItemCreate("scrl07",Player1,1,0,0)
-EscapeAreaMove("oh8100",4240,3020,W)
+EscapeAreaMove("ZB8100",4240,3020,W)
 ~ EXIT
   IF ~  InMyArea("ohblea")
 !Dead("ohblea")
 ~ THEN DO ~ClearAllActions()
-SetGlobal("ohb_finale_arena","oh8200",5)
+SetGlobal("ohb_finale_arena","ZB8200",5)
 GiveItemCreate("scrl07",Player1,1,0,0)
-EscapeAreaMove("oh8100",4240,3020,W)
+EscapeAreaMove("ZB8100",4240,3020,W)
 ~ EXTERN ~OHBLEA~ 16
   IF ~  Global("OHB_GERR_BANNORSWITCH","GLOBAL",3)
 ~ THEN DO ~GiveItemCreate("scrl07",Player1,1,0,0)
@@ -349,17 +349,17 @@ IF ~~ THEN BEGIN 39
   SAY @1382 /* Before I forget, take this. I finished it yestereve. Do be careful with it, and remember, Bannor is a dangerous wizard, adamantite or otherwise. Best of luck, my friend. */
   IF ~~ THEN DO ~ClearAllActions()
 SetGlobal("OHB_GERR_BANNORSWITCH","GLOBAL",4)
-SetGlobal("ohb_finale_arena","oh8200",5)
+SetGlobal("ohb_finale_arena","ZB8200",5)
 GiveItemCreate("ohbscrl2",Player1,1,0,0)
-EscapeAreaMove("oh8100",4240,3020,W)
+EscapeAreaMove("ZB8100",4240,3020,W)
 ~ EXIT
   IF ~  InMyArea("ohblea")
 !Dead("ohblea")
 ~ THEN DO ~ClearAllActions()
 SetGlobal("OHB_GERR_BANNORSWITCH","GLOBAL",4)
-SetGlobal("ohb_finale_arena","oh8200",5)
+SetGlobal("ohb_finale_arena","ZB8200",5)
 GiveItemCreate("ohbscrl2",Player1,1,0,0)
-EscapeAreaMove("oh8100",4240,3020,W)
+EscapeAreaMove("ZB8100",4240,3020,W)
 ~ EXTERN ~OHBLEA~ 16
 END
 

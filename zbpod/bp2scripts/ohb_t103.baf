@@ -1,5 +1,5 @@
 IF
-	AreaCheck("OH8100")  // TBP2 - Staging Area Map
+	AreaCheck("ZB8100")  // TBP2 - Staging Area Map
 	Global("OH_InitView","LOCALS",0)
 THEN
 	RESPONSE #100
@@ -13,7 +13,7 @@ THEN
 END
 
 IF
-	AreaCheck("OH8100")  // TBP2 - Staging Area Map
+	AreaCheck("ZB8100")  // TBP2 - Staging Area Map
 	!GlobalTimerNotExpired("OH_Taunt","LOCALS")
 	Range([PC],30)
 	Name("OHBLIZ01",Myself)  // Lizard Man Chieftain
@@ -25,7 +25,7 @@ THEN
 END
 
 IF
-	AreaCheck("OH8100")  // TBP2 - Staging Area Map
+	AreaCheck("ZB8100")  // TBP2 - Staging Area Map
 THEN
 	RESPONSE #100
 		NoAction()

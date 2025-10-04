@@ -890,7 +890,7 @@ END
 
 IF ~~ THEN BEGIN 69
   SAY @3337 /* I don't know what to do. I just don't know! I… I… Oh, this arena is through, I see that now. But if it must end, then I'll die with it! */
-  IF ~~ THEN DO ~SetGlobal("ohb_finale_arena","oh8300",2)
+  IF ~~ THEN DO ~SetGlobal("ohb_finale_arena","ZB8300",2)
 ActionOverride("ohbarzol",Enemy())
 ActionOverride("ohbberyl",Enemy())
 Enemy()
@@ -903,7 +903,7 @@ END
 
 IF ~~ THEN BEGIN 70
   SAY @3338 /* Yes, there's no point in further delaying the inevitable. I shall revel in your death, <CHARNAME>. */
-  IF ~~ THEN DO ~SetGlobal("ohb_finale_arena","oh8300",2)
+  IF ~~ THEN DO ~SetGlobal("ohb_finale_arena","ZB8300",2)
 ActionOverride("ohbarzol",Enemy())
 ActionOverride("ohbberyl",Enemy())
 Enemy()
@@ -913,7 +913,7 @@ END
 
 IF ~~ THEN BEGIN 71
   SAY @3339 /* Haximus, where are you—? Fine then! Run away if you must! I shall fight on alone if need be! Come then, <CHARNAME>, and defend yourself! */
-  IF ~~ THEN DO ~SetGlobal("ohb_finale_arena","oh8300",2)
+  IF ~~ THEN DO ~SetGlobal("ohb_finale_arena","ZB8300",2)
 ActionOverride("ohbarzol",Enemy())
 ActionOverride("ohbberyl",Enemy())
 Enemy()

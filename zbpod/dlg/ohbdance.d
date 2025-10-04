@@ -65,7 +65,7 @@ IF ~~ THEN BEGIN 5
   IF ~~ THEN DO ~SetGlobal("OHB_DORMAMUS_DOOR","GLOBAL",1)
 Unlock("Dormamus_door")
 OpenDoor("Dormamus_door")
-SetGlobal("ohb_dancers_panic","oh8100",1)
+SetGlobal("ohb_dancers_panic","ZB8100",1)
 ~ EXIT
 END
 

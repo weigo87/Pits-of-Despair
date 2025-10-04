@@ -7,7 +7,7 @@
 
 BEGIN ~OHBBRANS~
 
-IF ~  Global("OHB_GCENTRY","OH8100",1)
+IF ~  Global("OHB_GCENTRY","ZB8100",1)
 ~ THEN BEGIN 0
   SAY @125 /* What do you want, slave? */
   IF ~~ THEN REPLY @126 /* Are you Branson? */ GOTO 1
@@ -42,7 +42,7 @@ END
 IF ~~ THEN BEGIN 5
   SAY @140 /* You're a good <PRO_MANWOMAN>. Here, take this. It's our family ring. My uncle has one just like it. Tell the captain you got it off my body. He'll believe it. */
   IF ~~ THEN DO ~AddJournalEntry(101250,QUEST)
-SetGlobal("OHB_GCENTRY","OH8100",3)
+SetGlobal("OHB_GCENTRY","ZB8100",3)
 GiveItem("ohbring2",LastTalkedToBy)
 Polymorph(FIGHTER_MALE_HUMAN)
 EscapeArea()
@@ -52,7 +52,7 @@ END
 IF ~~ THEN BEGIN 6
   SAY @141 /* I don't keep that sort of gold on me, but here's the key to my footlocker. You'll find enough gold in there and maybe a bit more. Take it all. I'm getting out of here. Oh, take this too. It's our family ring. Dennaton has one just like it. Tell the captain you got it off my body. He'll believe it. */
   IF ~~ THEN DO ~AddJournalEntry(101250,QUEST)
-SetGlobal("OHB_GCENTRY","OH8100",3)
+SetGlobal("OHB_GCENTRY","ZB8100",3)
 GiveItem("ohbkey05",LastTalkedToBy)
 GiveItem("ohbring2",LastTalkedToBy)
 Polymorph(FIGHTER_MALE_HUMAN)

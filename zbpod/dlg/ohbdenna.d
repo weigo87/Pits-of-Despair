@@ -2429,6 +2429,8 @@ Global("OHB_105","GLOBAL",2)
 GiveGoldForce(3000)
 ActionOverride("ZBNEPHA",DestroySelf()) // Destory Neph Arena
 SetGlobal("ohb_cutscene_exit","global",1)
+SetGlobal("OHB_LAST_BATTLE","GLOBAL",105)
+SetGlobal("ohb_battle_xp_award","global",5)
 ~ EXIT
   IF ~!Global("ZB_SPAWN_NEPHY_FIGHT5","GLOBAL",2)~ THEN DO ~SetGlobal("OHB_105","GLOBAL",-1)
 GiveGoldForce(3000)
@@ -2818,7 +2820,7 @@ END
 
 IF ~  Global("OHB_ENDGAME","GLOBAL",2)
 Global("OHB_DENN_END","LOCALS",0)
-AreaCheck("OH8100")
+AreaCheck("ZB8100")
 ~ THEN BEGIN 247
   SAY @894 /* We need to be away from here. Your Planar Hunters failed. Our arena's in disarray! */
   IF ~~ THEN DO ~SetGlobal("OHB_DENN_END","LOCALS",1)

@@ -88,7 +88,7 @@ THEN
 END
 
 IF
-    AreaCheck("OH8100")  // TBP2 - Staging Area Map
+    AreaCheck("ZB8100")  // TBP2 - Staging Area Map
     Global("ZB_INTERVIEW","GLOBAL",1)
     Range([PC],30)
     See([PC])
