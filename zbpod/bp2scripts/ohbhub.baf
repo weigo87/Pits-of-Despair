@@ -682,10 +682,10 @@ IF
 	!StateCheck(Player1,CD_STATE_NOTVALID)
 	Global("ZB_NEPH_POST_INTERJECT_5","GLOBAL",2)
 	Global("ZB_NEPH_INTRO_RESPONSE","GLOBAL",11)
-	Global("ZB_NEPH_ESCAPE","GLOBAL",0)
+	Global("ZB_NEPH_ESCAPE_0","GLOBAL",0)
 THEN
 	RESPONSE #100
-		SetGlobal("ZB_NEPH_ESCAPE","GLOBAL",1)
+		SetGlobal("ZB_NEPH_ESCAPE_0","GLOBAL",1)
 		ClearActions("zbneph")
 		ActionOverride("zbneph",SetDialog("ZBNEPH"))
 		ActionOverride("zbneph",FaceObject([PC]))
