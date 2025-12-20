@@ -401,14 +401,14 @@ IF ~~ ZBNEPHREDEMPTION
   IF ~~ THEN REPLY @113 /* I need to go. Goodbye. */ EXIT
 END
 
-IF ~GlobalGT("ZB_NEPHY_FRIEND","GLOBAL",0) Global("ZB_NEPH_COPPERCORENT","GLOBAL",1) SetGlobal("ZB_NEPH_ESCAPE_1","GLOBAL",4)~ ZBNEPHFREIND
+IF ~GlobalGT("ZB_NEPHY_FRIEND","GLOBAL",0) Global("ZB_NEPH_COPPERCORENT","GLOBAL",1) Global("ZB_NEPH_ESCAPE_1","GLOBAL",4)~ ZBNEPHFREIND
   SAY @114 /* Well hello there <CHARNAME>, you seem to be all in one piece, how can I help you? */
   IF ~~ THEN REPLY @111 /* Yes, I must admit I missed you. Will you join us on our quest? */ DO ~IncrementGlobal("ZB_NEPHY_FRIEND","GLOBAL",1)~ GOTO ZBNEPHREALLYJOIN
   IF ~~ THEN REPLY @112 /* I wanted to see if you would join us now. We could use your help. */ GOTO ZBNEPHREALLYJOIN
   IF ~~ THEN REPLY @113 /* I need to go. Goodbye. */ EXIT
 END
 
-IF ~Global("ZB_NEPH_JOINS","GLOBAL",0) SetGlobal("ZB_NEPH_ESCAPE_1","GLOBAL",4)~ ZBNEPHREALLYJOIN
+IF ~Global("ZB_NEPH_JOINS","GLOBAL",0) Global("ZB_NEPH_ESCAPE_1","GLOBAL",4)~ ZBNEPHREALLYJOIN
   SAY @115 /* Oh, I'll happily join your merry band. */
   IF ~~ DO ~SetGlobal("ZB_NEPH_JOINS","GLOBAL",1) JoinParty()~ EXIT
 END
