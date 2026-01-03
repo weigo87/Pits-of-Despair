@@ -2389,13 +2389,6 @@ Global("OHB_101","GLOBAL",2)
 GiveGoldForce(1000)
 SetGlobal("ohb_cutscene_exit","global",1)
 ~ EXIT
-  IF ~  GlobalLT("OHB_LAST_BATTLE","GLOBAL",101)
-~ THEN DO ~SetGlobal("OHB_101","GLOBAL",-1)
-SetGlobal("OHB_LAST_BATTLE","GLOBAL",101)
-SetGlobal("ohb_battle_xp_award","global",1)
-GiveGoldForce(11000)
-SetGlobal("ohb_cutscene_exit","global",1)
-~ EXIT
 END
 
 IF ~  Global("OHB_BATTLE_COMPLETE","GLOBAL",2)
@@ -2404,13 +2397,6 @@ Global("OHB_102","GLOBAL",2)
   SAY @847 /* The champions of Baeloth's Pits have won! */
   IF ~~ THEN DO ~SetGlobal("OHB_102","GLOBAL",-1)
 GiveGoldForce(1500)
-SetGlobal("ohb_cutscene_exit","global",1)
-~ EXIT
-  IF ~  GlobalLT("OHB_LAST_BATTLE","GLOBAL",102)
-~ THEN DO ~SetGlobal("OHB_102","GLOBAL",-1)
-SetGlobal("OHB_LAST_BATTLE","GLOBAL",102)
-SetGlobal("ohb_battle_xp_award","global",2)
-GiveGoldForce(12000)
 SetGlobal("ohb_cutscene_exit","global",1)
 ~ EXIT
 END
@@ -2423,13 +2409,6 @@ Global("OHB_103","GLOBAL",2)
 GiveGoldForce(2000)
 SetGlobal("ohb_cutscene_exit","global",1)
 ~ EXIT
-  IF ~  GlobalLT("OHB_LAST_BATTLE","GLOBAL",103)
-~ THEN DO ~SetGlobal("OHB_103","GLOBAL",-1)
-SetGlobal("OHB_LAST_BATTLE","GLOBAL",103)
-SetGlobal("ohb_battle_xp_award","global",3)
-GiveGoldForce(13000)
-SetGlobal("ohb_cutscene_exit","global",1)
-~ EXIT
 END
 
 IF ~  Global("OHB_BATTLE_COMPLETE","GLOBAL",2)
@@ -2438,13 +2417,6 @@ Global("OHB_104","GLOBAL",2)
   SAY @847 /* The champions of Baeloth's Pits have won! */
   IF ~~ THEN DO ~SetGlobal("OHB_104","GLOBAL",-1)
 GiveGoldForce(2500)
-SetGlobal("ohb_cutscene_exit","global",1)
-~ EXIT
-  IF ~  GlobalLT("OHB_LAST_BATTLE","GLOBAL",104)
-~ THEN DO ~SetGlobal("OHB_104","GLOBAL",-1)
-SetGlobal("OHB_LAST_BATTLE","GLOBAL",104)
-SetGlobal("ohb_battle_xp_award","global",4)
-GiveGoldForce(14000)
 SetGlobal("ohb_cutscene_exit","global",1)
 ~ EXIT
 END
@@ -2460,13 +2432,6 @@ SetGlobal("ohb_cutscene_exit","global",1)
 ~ EXIT
   IF ~!Global("ZB_SPAWN_NEPHY_FIGHT5","GLOBAL",2)~ THEN DO ~SetGlobal("OHB_105","GLOBAL",-1)
 GiveGoldForce(3000)
-SetGlobal("ohb_cutscene_exit","global",1)
-~ EXIT
-  IF ~  GlobalLT("OHB_LAST_BATTLE","GLOBAL",105)
-~ THEN DO ~SetGlobal("OHB_105","GLOBAL",-1)
-SetGlobal("OHB_LAST_BATTLE","GLOBAL",105)
-SetGlobal("ohb_battle_xp_award","global",5)
-GiveGoldForce(15000)
 SetGlobal("ohb_cutscene_exit","global",1)
 ~ EXIT
 END
