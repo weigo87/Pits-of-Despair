@@ -1,5 +1,5 @@
 IF
-  Global("ZB_NEPH_MOVE_COPPER","GLOBAL",1)
+  True()
 THEN
   RESPONSE #100
     CutSceneId(Player1)
@@ -8,6 +8,6 @@ THEN
     SetGlobal("ZB_NEPH_COPPERCORENT","GLOBAL",1)
     ApplySpell("zbneph",WIZARD_INVISIBILITY)
     SmallWait(25)
-    ActionOverride("zbneph",MoveBetweenAreas("AR0406",[1586.1800],S))
+    ActionOverride("zbneph",DestroySelf())
     EndCutSceneMode()
 END

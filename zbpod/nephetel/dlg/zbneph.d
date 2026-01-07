@@ -235,12 +235,12 @@ END
 
 IF ~~ 18
   SAY @76 /* I’m sure you are, so keep quiet and listen carefully. */
-  IF ~~ GOTO 22
+  IF ~~ GOTO 21
 END
 
 IF ~~ 19
   SAY @77 /* This is a sensitive matter, and we must be careful that we are not overheard. */
-  IF ~~ GOTO 22
+  IF ~~ GOTO 21
 END
 
 IF ~~ 20
@@ -338,7 +338,9 @@ END
 
 IF ~~ ZBNEPHWHEREGOEXPLAIN
   SAY @97 /* Before being lured into the intrigue of the pits, I was on a mission to find a particular tome of importance. I will continue to search for it. */
-  IF ~~ GOTO 26
+  IF ~~ THEN REPLY @93 /* Yes, we must go, we have business to attend to. */ GOTO ZBNEPHCOPPERCORONET
+  IF ~~ THEN REPLY @95 /* You have been very helpful, perhaps you could join us on our quest? */ GOTO ZBNEPHIWOULDBEHAPPY
+  IF ~~ THEN REPLY @96 /* You are at the end of your usefulness, thief. */ DO ~IncrementGlobal("ZB_NEPHY_FRIEND","GLOBAL",-1)~ GOTO ZBNEPHEXIT
 END
 
 IF ~~ ZBNEPHCOPPERCORONET
@@ -346,12 +348,13 @@ IF ~~ ZBNEPHCOPPERCORONET
   IF ~~ DO ~
     SetGlobal("ZB_NEPH_MOVE_COPPER","GLOBAL",1)
     SetGlobal("ZB_NEPH_ESCAPE_1","GLOBAL",4)
+    ClearAllActions()
     StartCutSceneMode()
     StartCutScene("zbnephm")
     ~ EXIT
 END
 
-IF ~Global("ZB_NEPH_ESCAPE_1","GLOBAL",3) Global("ZB_NEPH_JOINS","GLOBAL",0)~ ZBNEPHIWOULDBEHAPPY
+IF ~~ ZBNEPHIWOULDBEHAPPY
   SAY @99 /* I would be happy to, however I need to inform you that I have a mission to find a tome for my employer. If in our travels we come across it I must deliver it to him. */
   IF ~~ DO ~SetGlobal("ZB_NEPH_ESCAPE_1","GLOBAL",4) SetGlobal("ZB_NEPH_JOINS","GLOBAL",1) JoinParty()~ EXIT
 END
@@ -361,6 +364,7 @@ IF ~~ ZBNEPHEXIT
   IF ~~ DO ~
     SetGlobal("ZB_NEPH_MOVE_COPPER","GLOBAL",1)
     SetGlobal("ZB_NEPH_ESCAPE_1","GLOBAL",4)
+    ClearAllActions()
     StartCutSceneMode()
     StartCutScene("zbnephm")
     ~ EXIT
@@ -408,7 +412,7 @@ IF ~GlobalGT("ZB_NEPHY_FRIEND","GLOBAL",0) Global("ZB_NEPH_COPPERCORENT","GLOBAL
   IF ~~ THEN REPLY @113 /* I need to go. Goodbye. */ EXIT
 END
 
-IF ~Global("ZB_NEPH_JOINS","GLOBAL",0) Global("ZB_NEPH_ESCAPE_1","GLOBAL",4)~ ZBNEPHREALLYJOIN
+IF ~~ ZBNEPHREALLYJOIN
   SAY @115 /* Oh, I'll happily join your merry band. */
   IF ~~ DO ~SetGlobal("ZB_NEPH_JOINS","GLOBAL",1) JoinParty()~ EXIT
 END
