@@ -3,7 +3,10 @@ IF
   GlobalGT("Chapter","GLOBAL",1)
   !Global("Chapter","GLOBAL",4)
   !Global("Chapter","GLOBAL",5)
+  AreaCheck("AR2000")
   XPGT(Player1,725000)
+  CombatCounter(0)
+  !StateCheck(Player1,CD_STATE_NOTVALID)
 THEN
   RESPONSE #100
     SetGlobalTimer("ZBPodMessengerArrives","GLOBAL",EIGHT_HOURS)
@@ -14,17 +17,19 @@ IF
   Global("ZBPodSummonsReceived","GLOBAL",1)
   GlobalTimerExpired("ZBPodMessengerArrives","GLOBAL")
   CombatCounter(0)
+  !StateCheck(Player1,CD_STATE_NOTVALID)
 THEN
   RESPONSE #100
     CreateCreatureObject("zbmes",Player1,0,0,0)
     SetGlobal("ZBPodSummonsReceived","GLOBAL",2)
-    SetGlobal("ZBPodTriggerOnTransition","MYAREA",1)
+    SetGlobal("ZBPodTriggerOnTransition","AR2000",1)
 END
 
 IF
   Global("ZBPodSummonsReceived","GLOBAL",5)
-  CombatCounter(0)
   Global("ZBPodTriggerOnTransition","MYAREA",0)
+  CombatCounter(0)
+  !StateCheck(Player1,CD_STATE_NOTVALID)
 THEN
   RESPONSE #100
     SetInterrupt(FALSE)
