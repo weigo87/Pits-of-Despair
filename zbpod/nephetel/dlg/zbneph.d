@@ -249,7 +249,7 @@ IF ~~ 20
 END
 
 IF ~Global("ZB_NEPH_ESCAPE_0","GLOBAL",3)~ 21
-  SAY @70 /* Oh, that is horrible! Boo shall never face such a grisly fate. When it is our time, he will have the burial of a true Rashemi berserker alongside me! */
+  SAY @79 /* During your recent battles, I’ve been buttering up one of the young Red Wizards that watches you fight. The fellow likes to dip a bit too heavily into his drink while watching, you see. Apparently he’s been using a magical charm to come and go from the pits as he pleases. */
   =
   @80 /* The very charm I now have in my pocket. */
   IF ~~ THEN REPLY @81 /* You, Nephetel, are brilliant. */ GOTO 22

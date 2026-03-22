@@ -24,7 +24,7 @@ THEN
         SetGlobal("MC_INIT_BATTLE","MYAREA",0)
         SetGlobal("OHB_BATTLE_COMPLETE","GLOBAL",1)
         PlaySound("BP2POS_1")
-        SetAreaScript("OHBARE1",DEFAULT)
+        SetAreaScript("ZBBARE1",DEFAULT)
         SetInterrupt(TRUE)
 END
 

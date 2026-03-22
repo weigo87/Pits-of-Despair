@@ -498,7 +498,6 @@ THEN
   SetGlobal("OHB_START_BATTLE","GLOBAL",1)
   SetGlobal("OHB_101","GLOBAL",1)
   SetGlobal("OHB_ARENA","GLOBAL",1)
-  SetGlobal("OHB_INTERVIEW","GLOBAL",1)
 END
 /// After match 1
 IF
@@ -519,6 +518,7 @@ THEN
   SetGlobal("ZB_NEPH_POST_INTERJECT_1","GLOBAL",5)
   ClearActions("zbneph")
   ActionOverride("zbneph",SetDialog("ZBNEPH"))
+  SetGlobal("OHB_INTERVIEW","GLOBAL",1)
 END
 ///
 
@@ -544,6 +544,7 @@ THEN
   SetGlobal("ZB_NEPH_POST_INTERJECT_2","GLOBAL",5)
   ClearActions("zbneph")
   ActionOverride("zbneph",SetDialog("ZBNEPH"))
+  SetGlobal("OHB_INTERVIEW","GLOBAL",1)
 END
 ///
 
@@ -573,7 +574,6 @@ THEN
   SetGlobal("OHB_START_BATTLE","GLOBAL",1)
   SetGlobal("OHB_103","GLOBAL",1)
   SetGlobal("OHB_ARENA","GLOBAL",3)
-  SetGlobal("OHB_INTERVIEW","GLOBAL",1)
 END
 /// After match 3
 IF
@@ -594,6 +594,7 @@ THEN
   SetGlobal("ZB_NEPH_POST_INTERJECT_3","GLOBAL",5)
   ClearActions("zbneph")
   ActionOverride("zbneph",SetDialog("ZBNEPH"))
+  SetGlobal("OHB_INTERVIEW","GLOBAL",1)
 END
 ///
 
@@ -623,7 +624,6 @@ THEN
   SetGlobal("OHB_START_BATTLE","GLOBAL",1)
   SetGlobal("OHB_104","GLOBAL",1)
   SetGlobal("OHB_ARENA","GLOBAL",3)
-  SetGlobal("OHB_INTERVIEW","GLOBAL",1)
 END
 
 /// After match 4
@@ -645,6 +645,7 @@ THEN
   SetGlobal("ZB_NEPH_POST_INTERJECT_4","GLOBAL",5)
   ClearActions("zbneph")
   ActionOverride("zbneph",SetDialog("ZBNEPH"))
+  SetGlobal("OHB_INTERVIEW","GLOBAL",1)
 END
 ///
 
@@ -674,7 +675,6 @@ THEN
   SetGlobal("OHB_START_BATTLE","GLOBAL",1)
   SetGlobal("OHB_105","GLOBAL",1)
   SetGlobal("OHB_ARENA","GLOBAL",3)
-  SetGlobal("OHB_INTERVIEW","GLOBAL",1)
 END
 
 /// After match 5

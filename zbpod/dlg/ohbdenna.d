@@ -156,10 +156,10 @@ IF ~~ THEN BEGIN 16
 ClearAllActions()
 SetGlobal("OHB_START_BATTLE","GLOBAL",3)
 SetGlobal("OHB_EVENT_102_DIALOG","MYAREA",1)
-SetGlobal("ohb_spawn_gladiators","myarea",0)
+SetGlobal("ohb_spawn_gladiators","MYAREA",0)
 StartCutScene("ohbcut09")
 ~ EXIT
-  IF ~!Global("OHB_EVENT_102_DIALOG","MYAREA",0)~ THEN DO ~SetGlobal("OHB_START_BATTLE","GLOBAL",3)~ GOTO 21
+  // IF ~!Global("OHB_EVENT_102_DIALOG","MYAREA",0)~ THEN DO ~SetGlobal("OHB_START_BATTLE","GLOBAL",3)~ GOTO 21
 END
 
 IF ~  Global("OHB_START_BATTLE","GLOBAL",3)
@@ -2387,6 +2387,7 @@ Global("OHB_101","GLOBAL",2)
   SAY @846 /* My performers are victorious!  */
   IF ~~ THEN DO ~SetGlobal("OHB_101","GLOBAL",-1)
 GiveGoldForce(1000)
+SetGlobal("OHB_LAST_BATTLE","GLOBAL",101)
 SetGlobal("ohb_cutscene_exit","global",1)
 ~ EXIT
 END
@@ -2397,6 +2398,7 @@ Global("OHB_102","GLOBAL",2)
   SAY @847 /* The champions of Baeloth's Pits have won! */
   IF ~~ THEN DO ~SetGlobal("OHB_102","GLOBAL",-1)
 GiveGoldForce(1500)
+SetGlobal("OHB_LAST_BATTLE","GLOBAL",102)
 SetGlobal("ohb_cutscene_exit","global",1)
 ~ EXIT
 END
@@ -2407,6 +2409,7 @@ Global("OHB_103","GLOBAL",2)
   SAY @846 /* My performers are victorious!  */
   IF ~~ THEN DO ~SetGlobal("OHB_103","GLOBAL",-1)
 GiveGoldForce(2000)
+SetGlobal("OHB_LAST_BATTLE","GLOBAL",103)
 SetGlobal("ohb_cutscene_exit","global",1)
 ~ EXIT
 END
@@ -2417,6 +2420,7 @@ Global("OHB_104","GLOBAL",2)
   SAY @847 /* The champions of Baeloth's Pits have won! */
   IF ~~ THEN DO ~SetGlobal("OHB_104","GLOBAL",-1)
 GiveGoldForce(2500)
+SetGlobal("OHB_LAST_BATTLE","GLOBAL",104)
 SetGlobal("ohb_cutscene_exit","global",1)
 ~ EXIT
 END

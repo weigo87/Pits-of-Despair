@@ -16,7 +16,7 @@ IF
 	Global("ohb_plot_cutscene","global",0)
 	Global("OHB_INTERVIEW","GLOBAL",1)
 	!Global("OHB_START_BATTLE","GLOBAL",1)
-	Range([PC],12)
+	Range([PC],30)
 	See([PC])
 THEN
 	RESPONSE #100

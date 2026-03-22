@@ -63,7 +63,7 @@ THEN
 		SmallWait(30)
 		SetCursorState(FALSE)
 		StartMovie("pod")
-		SetGlobal("ohb_voghiln_greeting","ZB8100",1) // TBP2 - Staging Area Map
+		SetGlobal("zb_voghiln_greeting","GLOBAL",1) // TBP2 - Staging Area Map
 		FadeFromColor([60.0],0)
 		EndCutSceneMode()
 		SaveGame(0)

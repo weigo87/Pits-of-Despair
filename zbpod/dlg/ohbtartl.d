@@ -433,7 +433,7 @@ IF ~~ THEN BEGIN 47
       SetGlobal("OHB_START_BATTLE","GLOBAL",1)
       SetGlobal("OHB_102","GLOBAL",1)
       SetGlobal("OHB_ARENA","GLOBAL",2)
-      SetGlobal("OHB_INTERVIEW","GLOBAL",1)~ EXIT
+      ~ EXIT
   IF ~Global("OHB_LAST_BATTLE","GLOBAL",102)~ THEN REPLY @3252 /* I'd like to fight my next battle. */ DO ~SetGlobal("ZB_NEPH_INTERJECT_3","GLOBAL",1)~ EXIT
   IF ~Global("OHB_LAST_BATTLE","GLOBAL",103)~ THEN REPLY @3252 /* I'd like to fight my next battle. */ DO ~SetGlobal("ZB_NEPH_INTERJECT_4","GLOBAL",1)~ EXIT
   IF ~Global("OHB_LAST_BATTLE","GLOBAL",104)~ THEN REPLY @3252 /* I'd like to fight my next battle. */ DO ~SetGlobal("ZB_NEPH_INTERJECT_5","GLOBAL",1)~ EXIT

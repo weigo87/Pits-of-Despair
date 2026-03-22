@@ -7,6 +7,9 @@ COPY_EXISTING ~zbdrclch.CRE~ ~override~
     SAY 0x0c @15000
     WRITE_LONG 0x28 IDS_OF_SYMBOL (animate MO_DRACOLICH_NWN)
 
+COMPILE EVALUATE_BUFFER ~%MOD_FOLDER%/creatures/voghiln/ohbvoghi.baf~
+COMPILE EVALUATE_BUFFER ~%MOD_FOLDER%/creatures/ohbstann/ohbstann.baf~
+
 COPY ~%MOD_FOLDER%/creatures/dennaton~ ~override~
 COPY_EXISTING ~ohbdenna.cre~ ~override~
     SAY 0x08 @15002
