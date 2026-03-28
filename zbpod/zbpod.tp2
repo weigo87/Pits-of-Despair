@@ -22,14 +22,14 @@ AUTO_TRA ~%MOD_FOLDER%/lang/%s~
 LANGUAGE  ~English~
           ~english~
           ~zbpod/lang/english/weidu.tra~
-          ~zbpod/lang/english/JournalEntries.tra~
+          ~zbpod/lang/english/journalentries.tra~
           ~zbpod/lang/english/cutscenes.tra~
           ~zbpod/lang/english/neph.tra~
 
 LANGUAGE  ~Simplified Chinese By Lzw104522773~
           ~schinese~
           ~zbpod/lang/schinese/weidu.tra~
-          ~zbpod/lang/schinese/JournalEntries.tra~
+          ~zbpod/lang/schinese/journalentries.tra~
           ~zbpod/lang/schinese/cutscenes.tra~
           ~zbpod/lang/schinese/neph.tra~
 
@@ -66,7 +66,8 @@ COMPILE EVALUATE_BUFFER ~%MOD_FOLDER%/cutscene~ USING ~%MOD_FOLDER%/lang/%LANGUA
 COMPILE EVALUATE_BUFFER ~%MOD_FOLDER%/bp2scripts~
 
 /* new journal entries */
-ADD_JOURNAL TITLE (@800000) @800001 USING ~%MOD_FOLDER%/lang/english/JournalEntries.tra~
+ADD_JOURNAL TITLE (@800000) @800001
+ADD_JOURNAL TITLE (@800002) @800003
 
 // Dialogs
 COMPILE EVALUATE_BUFFER ~%MOD_FOLDER%/dlg/ohbbello.d~

@@ -2,3 +2,14 @@
 @800001 = ~Pits of Despair
 
 A messenger delivered a note from Vyatri, an innkeeper in Tradesmeet, who requested that we visit his establishment. A ring was enclosed with the letter, along with promises of further rewards, if we meet a Djinni there.~
+@800002 = ~Shady Document~
+@800003 = ~A handwritten transcript, detailing a meeting between one Lady Katarina and Lord Dominick. An uncredited spy has crafted this extensive document, meticulously capturing even Lord Dominick's most banal ramblings. A few passages catch your eye:
+
+Lady Katarina: I salute your taste, my Lord Dominick, exactly the delightful earthy tones you described—my, is that the bottle gone? One might suspect a less honorable and handsome man of plying me with drink. I jest, of course, my lord. Come, let us open another bottle to toast the hero of Baldur’s Gate! Tell me of how you met, again.
+Dominick: I apologize, my lady. When I said I knew the hero, I meant more from... um, afar. I was in Baldur's Gate, when <PRO_HESHE> saved the city. My father ‘n I were visiting at the time.
+Lady Katarina: Oh, what a sly rascal, to have deceived me so... You wouldn't lie to me now that we are such good friends, would you, my dear?
+Dominick: Never, Miss Katarina. I can tell you what I know… <PRO_HESHE> was heralded a hero for thwarting the evil of Sarevok, but there were rumors that they both shared blood!
+Lady Katarina: Do continue! I cannot deny an appetite for such gossip.
+Dominick: Oh indeed… when they left the city—the lot of them—it was all but confirmed: both Sarevok and his slayer were… children of Bhaal…
+
+The remainder of the transcript becomes increasingly incoherent, as Lord Dominick's inebriation overcomes intelligibility and then, eventually, consciousness.~

@@ -134,7 +134,7 @@ IF ~~ zbnepharena4
 END
 
 IF ~~ zbnepharena4.1
-  SAY @271 /* Nephetel: Ah, the perpetrators of your capture, no doubt. They’re a… lively bunch, but I haven’t interacted with them too closely myself, thankfully. I probably can’t tell you too much more than you already know, but I can try. */
+  SAY @271 /* Ah, the perpetrators of your capture, no doubt. They’re a… lively bunch, but I haven’t interacted with them too closely myself, thankfully. I probably can’t tell you too much more than you already know, but I can try. */
   =
   @272 /* The Winged is the leader, and she’s a materialist angel. Go figure, right? I have no idea what she did to fall so far from Mount Celestia or wherever she comes from, and quite frankly I wouldn’t want to ask. */
   =

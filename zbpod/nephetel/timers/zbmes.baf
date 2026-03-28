@@ -4,7 +4,7 @@ IF
   !Global("Chapter","GLOBAL",4)
   !Global("Chapter","GLOBAL",5)
   AreaCheck("AR2000")
-  XPGT(Player1,725000)
+  XPGT(Player1,800000)
   CombatCounter(0)
   !StateCheck(Player1,CD_STATE_NOTVALID)
 THEN

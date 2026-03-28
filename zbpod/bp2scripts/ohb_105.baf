@@ -15,15 +15,15 @@ END
 
 IF
 	Global("ZB_SPAWN_NEPHY_FIGHT5","GLOBAL",1)
-	Global("OHB_START_BATTLE","GLOBAL",3)
+	Global("OHB_START_BATTLE","GLOBAL",4)
 THEN
 	RESPONSE #100
 		SetGlobal("ZB_SPAWN_NEPHY_FIGHT5","GLOBAL",2)
 		CreateCreature("ZBNEPHA",[920.1150],N)  // Neph Arena
-		SmallWait(5)
+		SmallWait(25)
 		ChangeEnemyAlly("ZBNEPHA",ALLY)
 		ClearActions("ZBNEPHA")
-		Continue()
+		SmallWait(100)
 END
 
 IF
