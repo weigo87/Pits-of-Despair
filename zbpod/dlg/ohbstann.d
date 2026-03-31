@@ -1,10 +1,3 @@
-// creator  : weidu (version 24900)
-// argument : OHBSTANN.DLG
-// game     : ..
-// source   : ../DATA/BLACKPITS.BIF
-// dialog   : ..\lang\en_us\dialog.tlk
-// dialogF  : (none)
-
 BEGIN ~OHBSTANN~
 
 IF ~  Global("OHB_TALKED_STANNEL","LOCALS",0)
@@ -112,7 +105,7 @@ IF ~  OR(2)
 Global("OHB_TALKED_STANNEL","LOCALS",1)
 !GlobalLT("OHB_LAST_BATTLE","GLOBAL",101)
 GlobalLT("OHB_LAST_BATTLE","GLOBAL",405)
-Global("ohb_finale","global",0)
+Global("ohb_finale","GLOBAL",0)
 ~ THEN BEGIN 13
   SAY @2785 /* The dashing duelist, the persistent pugilist, the gallant gladiator returns! Have you a moment to discuss your latest match? */
   IF ~  Global("OHB_LAST_BATTLE","GLOBAL",101)

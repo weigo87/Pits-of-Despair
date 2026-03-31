@@ -250,7 +250,7 @@ END
 
 IF ~~ THEN BEGIN 35
   SAY @3137 /* Who I really am, <CHARNAME>, is a gladiator. Now defend yourself. */
-  IF ~~ THEN DO ~SetGlobal("ohb_finale_arena","oh8300",2)
+  IF ~~ THEN DO ~SetGlobal("ohb_finale_arena","ZB8300",2)
 SetGlobal("OHB_SYMM_FIGHTS","GLOBAL",1)
 ActionOverride("ohbtartl",EscapeArea())
 ActionOverride("ohbarzol",Enemy())
@@ -258,7 +258,7 @@ ActionOverride("ohbberyl",Enemy())
 Enemy()
 ~ EXIT
   IF ~  Global("OHB_TARTLE_FIGHTS","GLOBAL",1)
-~ THEN DO ~SetGlobal("ohb_finale_arena","oh8300",2)
+~ THEN DO ~SetGlobal("ohb_finale_arena","ZB8300",2)
 SetGlobal("OHB_SYMM_FIGHTS","GLOBAL",1)
 ActionOverride("ohbtartl",Enemy())
 ActionOverride("ohbarzol",Enemy())
@@ -276,7 +276,7 @@ END
 
 IF ~~ THEN BEGIN 37
   SAY @3139 /* Gladly. Let us make our match one for the ages! */
-  IF ~~ THEN DO ~SetGlobal("ohb_finale_arena","oh8300",2)
+  IF ~~ THEN DO ~SetGlobal("ohb_finale_arena","ZB8300",2)
 SetGlobal("OHB_SYMM_FIGHTS","GLOBAL",1)
 ActionOverride("ohbtartl",EscapeArea())
 ActionOverride("ohbarzol",Enemy())
@@ -284,7 +284,7 @@ ActionOverride("ohbberyl",Enemy())
 Enemy()
 ~ EXIT
   IF ~  Global("OHB_TARTLE_FIGHTS","GLOBAL",1)
-~ THEN DO ~SetGlobal("ohb_finale_arena","oh8300",2)
+~ THEN DO ~SetGlobal("ohb_finale_arena","ZB8300",2)
 SetGlobal("OHB_SYMM_FIGHTS","GLOBAL",1)
 ActionOverride("ohbtartl",Enemy())
 ActionOverride("ohbarzol",Enemy())

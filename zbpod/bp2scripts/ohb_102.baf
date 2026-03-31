@@ -16,13 +16,13 @@ END
 IF
 	Global("OHB_102","GLOBAL",1)
 	Global("OHB_START_BATTLE","GLOBAL",2)
-	Global("ohb_spawn_gladiators","myarea",0)
+	Global("ohb_spawn_gladiators","MYAREA",0)
 	Global("OHB_EVENT_102","MYAREA",0)
 THEN
 	RESPONSE #100
 		StartCutSceneMode()
 		ClearAllActions()
-		SetGlobal("ohb_spawn_gladiators","myarea",1)
+		SetGlobal("ohb_spawn_gladiators","MYAREA",1)
 		SmallWait(5)
 		ActionOverride(Player1,JumpToPoint([935.1036]))
 		ActionOverride(Player2,JumpToPoint([935.1096]))
@@ -45,19 +45,19 @@ THEN
 		SmallWait(75)
 		ActionOverride("ohbdenna",Face(SW))
 		SmallWait(1)
-		SetGlobal("ZB_NEPH_POST_INTERJECT_2","GLOBAL",1)
+		SetGlobal("ZB_NEPH_POST_INTERJECT_2","GLOBAL",1) // Do not move to the other cutscene, this is the first instance of the cutscene
 		ActionOverride("ohbdenna",StartDialogueNoSet(Player1))
 END
 
 IF
 	Global("OHB_102","GLOBAL",1)
 	Global("OHB_START_BATTLE","GLOBAL",2)
-	Global("ohb_spawn_gladiators","myarea",0)
+	Global("ohb_spawn_gladiators","MYAREA",0)
 	Global("OHB_EVENT_102","MYAREA",1)
 THEN
 	RESPONSE #100
 		StartCutSceneMode()
-		SetGlobal("ohb_spawn_gladiators","myarea",1)
+		SetGlobal("ohb_spawn_gladiators","MYAREA",1)
 		ActionOverride("OHBDENNA",ApplySpellRES("OHBEXPLR",Myself))  // No such index
 		SmallWait(5)
 		ActionOverride(Player1,JumpToPoint([935.1036]))
@@ -94,13 +94,9 @@ THEN
 		ActionOverride("OHBMERLE",DestroySelf())  // Merle
 		ActionOverride("OHBLITTL",DestroySelf())  // Little John
 		SmallWait(5)
-		CreateCreature("OHBMIN01",[1578.690],SSW)
-		CreateCreature("OHBMIN01",[1701.786],SSW)
-		Wait(1)
 		DayNight(DUSK_END)
 		FadeFromColor([50.0],0)
 		SmallWait(25)
-		SetGlobal("OHB_EVENT_102_DIALOG","MYAREA",2)
 		SetGlobal("OHB_EVENT_102","MYAREA",1)
 		SetGlobal("OHB_ENEMY_OVERRIDE","GLOBAL",0)
 		ApplySpell("ohbdenna",RESTORE_FULL_HEALTH)  // Dennaton

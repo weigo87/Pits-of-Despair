@@ -77,7 +77,7 @@ PlaySound("EFF_M10")
 Unlock("LoungeDoor")
 OpenDoor("LoungeDoor")
 Face(SW)
-SetGlobal("OHB_GCENTRY","OH8100",5)
+SetGlobal("OHB_GCENTRY","ZB8100",5)
 ~ EXIT
 END
 
@@ -106,7 +106,7 @@ IF ~~ THEN BEGIN 14
   SAY @1277 /* His name's Branson. He's usually on his bunk when he's off-duty. Cut his throat, pierce his heart, I don't care. Just get it done and I'll turn my head on your comings and goings here and have my boys to do the same. */
   IF ~~ THEN DO ~AddJournalEntry(101248,QUEST)
 CreateCreatureImpassable("ohbbrans",[1108.2605],NW)
-SetGlobal("OHB_GCENTRY","OH8100",1)
+SetGlobal("OHB_GCENTRY","ZB8100",1)
 ~ EXIT
 END
 
@@ -121,7 +121,7 @@ END
 
 IF ~  NumTimesTalkedToGT(0)
 !Dead("OHBBRANS")
-Global("OHB_GCENTRY","OH8100",1)
+Global("OHB_GCENTRY","ZB8100",1)
 GlobalLT("ohb_finale","global",1)
 ~ THEN BEGIN 16
   SAY @1282 /* You again? Don't you have things to take care of downstairs? Go back and don't return before it's done. */
@@ -130,7 +130,7 @@ END
 
 IF ~  NumTimesTalkedToGT(0)
 !Dead("OHBBRANS")
-Global("OHB_GCENTRY","OH8100",3)
+Global("OHB_GCENTRY","ZB8100",3)
 GlobalLT("ohb_finale","global",1)
 ~ THEN BEGIN 17
   SAY @1283 /* I'm told Branson is nowhere to be found, but nobody's seen his body. If you took care of him, what's your proof? */
@@ -170,11 +170,11 @@ PlaySound("EFF_M10")
 Unlock("LoungeDoor")
 OpenDoor("LoungeDoor")
 Face(SW)
-SetGlobal("OHB_GCENTRY","OH8100",5)
+SetGlobal("OHB_GCENTRY","ZB8100",5)
 ~ EXIT
 END
 
-IF ~  GlobalLT("OHB_GCENTRY","OH8100",5)
+IF ~  GlobalLT("OHB_GCENTRY","ZB8100",5)
 Dead("OHBBRANS")
 ~ THEN BEGIN 20
   SAY @1290 /* I hear you've taken care of things downstairs. Good <PRO_GIRLBOY>. The Hunters' Lounge is yours to explore. Don't attract attention to yourself or we'll both feed Stirv's beasts. */
@@ -198,7 +198,7 @@ PlaySound("EFF_M10")
 Unlock("LoungeDoor")
 OpenDoor("LoungeDoor")
 Face(SW)
-SetGlobal("OHB_GCENTRY","OH8100",5)
+SetGlobal("OHB_GCENTRY","ZB8100",5)
 ~ EXIT
 END
 
@@ -209,29 +209,29 @@ IF ~  GlobalLT("ohb_finale","global",1)
 END
 
 IF ~  GlobalGT("ohb_finale","global",1)
-Global("ohb_finale_captain_bark","oh8100",1)
-Global("ohb_finale_captain_bark2","oh8100",1)
-Global("ohb_finale_captain_bark3","oh8100",0)
+Global("ohb_finale_captain_bark","ZB8100",1)
+Global("ohb_finale_captain_bark2","ZB8100",1)
+Global("ohb_finale_captain_bark3","ZB8100",0)
 ~ THEN BEGIN 22
   SAY @1292 /* You leave me no choice but to kill you, slaves! Dennaton's orders be damned! */
-  IF ~~ THEN DO ~SetGlobal("ohb_finale_captain_bark3","oh8100",1)
+  IF ~~ THEN DO ~SetGlobal("ohb_finale_captain_bark3","ZB8100",1)
 Enemy()
 Shout(151)
 ~ EXIT
 END
 
 IF ~  Global("ohb_finale","global",1)
-Global("ohb_finale_captain_bark","oh8100",0)
+Global("ohb_finale_captain_bark","ZB8100",0)
 ~ THEN BEGIN 23
   SAY @1293 /* Your little rebellion has come to naught, slaves! When the Hunters return—or reinforcements arrive—we'll destroy you. Or maybe we'll just let you starve and watch you die slow! */
-  IF ~~ THEN DO ~SetGlobal("ohb_finale_captain_bark","oh8100",1)
+  IF ~~ THEN DO ~SetGlobal("ohb_finale_captain_bark","ZB8100",1)
 ~ EXIT
 END
 
 IF ~  GlobalGT("ohb_finale","global",1)
-Global("ohb_finale_captain_bark2","oh8100",0)
+Global("ohb_finale_captain_bark2","ZB8100",0)
 ~ THEN BEGIN 24
   SAY @1294 /* Stormed the barracks, did you? It matters not. You're trapped and reinforcements will arrive any minute. */
-  IF ~~ THEN DO ~SetGlobal("ohb_finale_captain_bark2","oh8100",1)
+  IF ~~ THEN DO ~SetGlobal("ohb_finale_captain_bark2","ZB8100",1)
 ~ EXIT
 END

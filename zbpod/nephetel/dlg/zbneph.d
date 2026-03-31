@@ -134,7 +134,7 @@ IF ~~ zbnepharena4
 END
 
 IF ~~ zbnepharena4.1
-  SAY @271 /* Nephetel: Ah, the perpetrators of your capture, no doubt. They’re a… lively bunch, but I haven’t interacted with them too closely myself, thankfully. I probably can’t tell you too much more than you already know, but I can try. */
+  SAY @271 /* Ah, the perpetrators of your capture, no doubt. They’re a… lively bunch, but I haven’t interacted with them too closely myself, thankfully. I probably can’t tell you too much more than you already know, but I can try. */
   =
   @272 /* The Winged is the leader, and she’s a materialist angel. Go figure, right? I have no idea what she did to fall so far from Mount Celestia or wherever she comes from, and quite frankly I wouldn’t want to ask. */
   =
@@ -249,7 +249,7 @@ IF ~~ 20
 END
 
 IF ~Global("ZB_NEPH_ESCAPE_0","GLOBAL",3)~ 21
-  SAY @70 /* Oh, that is horrible! Boo shall never face such a grisly fate. When it is our time, he will have the burial of a true Rashemi berserker alongside me! */
+  SAY @79 /* During your recent battles, I’ve been buttering up one of the young Red Wizards that watches you fight. The fellow likes to dip a bit too heavily into his drink while watching, you see. Apparently he’s been using a magical charm to come and go from the pits as he pleases. */
   =
   @80 /* The very charm I now have in my pocket. */
   IF ~~ THEN REPLY @81 /* You, Nephetel, are brilliant. */ GOTO 22

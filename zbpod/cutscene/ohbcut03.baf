@@ -28,7 +28,7 @@ THEN
 		SetGlobal("sprite_is_deadohbpol","global",0)
 		SetGlobal("sprite_is_deadohbthass","global",0)
 		SetGlobal("sprite_is_deadohbwing","global",0)
-		SetMasterArea("OH8100")  // TBP2 - Staging Area Map
+		SetMasterArea("ZB8100")  // TBP2 - Staging Area Map
 		ActionOverride("ohbnajim",DestroySelf())
 		ActionOverride("ohbbanno",DestroySelf())
 		ActionOverride("ohbdorma",DestroySelf())
@@ -37,13 +37,13 @@ THEN
 		ActionOverride("ohbthass",DestroySelf())
 		ActionOverride("ohbwing",DestroySelf())
 		Wait(3)
-		ActionOverride(Player2,LeaveAreaLUA("OH8100","",[2450.1375],S))  // TBP2 - Staging Area Map
-		ActionOverride(Player3,LeaveAreaLUA("OH8100","",[2543.1376],S))  // TBP2 - Staging Area Map
-		ActionOverride(Player4,LeaveAreaLUA("OH8100","",[2496.1345],S))  // TBP2 - Staging Area Map
-		ActionOverride(Player5,LeaveAreaLUA("OH8100","",[2585.1342],S))  // TBP2 - Staging Area Map
-		ActionOverride(Player6,LeaveAreaLUA("OH8100","",[2540.1308],S))  // TBP2 - Staging Area Map
-		LeaveAreaLUAPanic("OH8100","",[2499.1409],S)  // TBP2 - Staging Area Map
-		LeaveAreaLUA("OH8100","",[2499.1409],S)  // TBP2 - Staging Area Map
+		ActionOverride(Player2,LeaveAreaLUA("ZB8100","",[2450.1375],S))  // TBP2 - Staging Area Map
+		ActionOverride(Player3,LeaveAreaLUA("ZB8100","",[2543.1376],S))  // TBP2 - Staging Area Map
+		ActionOverride(Player4,LeaveAreaLUA("ZB8100","",[2496.1345],S))  // TBP2 - Staging Area Map
+		ActionOverride(Player5,LeaveAreaLUA("ZB8100","",[2585.1342],S))  // TBP2 - Staging Area Map
+		ActionOverride(Player6,LeaveAreaLUA("ZB8100","",[2540.1308],S))  // TBP2 - Staging Area Map
+		LeaveAreaLUAPanic("ZB8100","",[2499.1409],S)  // TBP2 - Staging Area Map
+		LeaveAreaLUA("ZB8100","",[2499.1409],S)  // TBP2 - Staging Area Map
 		MultiPlayerSync()
 		FadeToColor([0.0],0)
 		SetSequence(SEQ_SLEEP)
@@ -63,7 +63,7 @@ THEN
 		SmallWait(30)
 		SetCursorState(FALSE)
 		StartMovie("pod")
-		SetGlobal("ohb_voghiln_greeting","oh8100",1) // TBP2 - Staging Area Map
+		SetGlobal("zb_voghiln_greeting","GLOBAL",1) // TBP2 - Staging Area Map
 		FadeFromColor([60.0],0)
 		EndCutSceneMode()
 		SaveGame(0)

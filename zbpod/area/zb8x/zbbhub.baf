@@ -1,0 +1,983 @@
+IF
+  !GlobalTimerNotExpired("ZB_SimulacrumTimer","zb8100")
+THEN
+  RESPONSE #100
+    ApplySpellRES("ZBPDSIM",Player1)
+    ApplySpellRES("ZBPDSIM",Player2)
+    ApplySpellRES("ZBPDSIM",Player3)
+    ApplySpellRES("ZBPDSIM",Player4)
+    ApplySpellRES("ZBPDSIM",Player5)
+    ApplySpellRES("ZBPDSIM",Player6)
+    SetGlobalTimer("ZB_SimulacrumTimer","zb8100",3)
+END
+
+IF
+  Global("OHB_START_HUB","MYAREA",0)
+THEN
+  RESPONSE #100
+    SetGlobal("OHB_START_HUB","MYAREA",1)
+    SetGlobal("OHB_HERO","GLOBAL",10)
+    SetGlobal("ohb_villain","global",10)
+    SetGlobal("OHB_ANTI_DENNATON","GLOBAL",0)
+    SetGlobal("TIER","GLOBAL",0)
+    SetGlobal("BLACK_PITS","GLOBAL",0)
+    Explore()
+    ActionOverride("ohbdrgd",DestroySelf())
+    ActionOverride("ohbbrans",DestroySelf())
+    ActionOverride("ohbleoka",DestroySelf())
+    CreateCreature("ohbstirv",[2440.2900],NW)  // Stirv the Creature Wrangler - Stirv
+    CreateCreature("ohbmena1",[2460.2785],S)  // Vampiric Wolf
+    CreateCreature("ohbmena2",[2100.3000],SE)  // Dangerous Moose
+    CreateCreature("ohbmena3",[2575.3005],NW)  // Grizzly Bear
+    CreateCreature("modisp01",[2470.3080],NW)  // Displacer Beast
+    CreateCreature("ohbmena5",[2260.2900],SE)  // Boalisk
+    CreateCreature("ohbmena6",[2365.3160],NW)  // Carrion Crawler
+    CreateCreature("ohbmena7",[1950.3120],SE)  // Vortex Spider
+    CreateCreature("ohbmena8",[2180.3235],N)  // Greater Wyvern
+    ActionOverride("ohbimim",SetNumTimesTalkedTo(1))
+END
+
+IF
+  StateCheck(Player1, STATE_REALLY_DEAD)
+  Global("ZB_ISDEAD","MYAREA",0)
+THEN
+  RESPONSE #100
+    SetGlobal("ZB_ISDEAD","MYAREA",1)
+    GameOver(17123) // The main character has died.
+END
+
+IF
+  Global("OHB_ANTIMAGIC","GLOBAL",0)
+  AreaCheckAllegiance(PC)
+THEN
+  RESPONSE #100
+    SetGlobal("OHB_ANTIMAGIC","GLOBAL",1)
+    ApplySpellRES("OHBANTIM",Player1)  // No such index
+    ApplySpellRES("OHBANTIM",Player2)  // No such index
+    ApplySpellRES("OHBANTIM",Player3)  // No such index
+    ApplySpellRES("OHBANTIM",Player4)  // No such index
+    ApplySpellRES("OHBANTIM",Player5)  // No such index
+    ApplySpellRES("OHBANTIM",Player6)  // No such index
+END
+
+IF
+  Global("OHB_ANTIMAGIC","GLOBAL",2)
+  AreaCheckAllegiance(PC)
+THEN
+  RESPONSE #100
+    SetGlobal("OHB_ANTIMAGIC","GLOBAL",3)
+    ApplySpellRES("OHBAMREM",Player1)  // No such index
+    ApplySpellRES("OHBAMREM",Player2)  // No such index
+    ApplySpellRES("OHBAMREM",Player3)  // No such index
+    ApplySpellRES("OHBAMREM",Player4)  // No such index
+    ApplySpellRES("OHBAMREM",Player5)  // No such index
+    ApplySpellRES("OHBAMREM",Player6)  // No such index
+END
+
+IF
+  Global("ohb_plot_cutscene","global",1)
+  Global("OHB_LAST_BATTLE","GLOBAL",404)
+THEN
+  RESPONSE #100
+    SetCursorState(TRUE)
+    SmallWait(1)
+    MoveViewPoint([4470.3168],BD_NORMAL)
+    SetGlobal("ohb_plot_cutscene","global",2)
+    Wait(2)
+    ActionOverride("ohbtartl",MoveToPoint([4395.3175]))
+    Wait(1)
+    ActionOverride("ohbtartl",DisplayStringHead(Myself,92861))  // Brodle! BRODLE! Where are you, you flea-bitten louse?
+    Wait(6)
+    ActionOverride("ohbbrodl",JumpToPoint([4205.3075]))
+    SmallWait(1)
+    ActionOverride("ohbbrodl",MoveToPoint([4310.3110]))
+    Wait(1)
+    ActionOverride("ohbtartl",Face(NW))
+    SmallWait(8)
+    ActionOverride("ohbbrodl",FaceObject("ohbtartl"))  // Tartle
+    ActionOverride("ohbbrodl",DisplayStringHead(Myself,92862))  // Yes, Tartle. What is it now?
+    Wait(3)
+    ActionOverride("ohbtartl",DisplayStringHead(Myself,92863))  // It's the Winged! That dim-witted planetar and her crew have been gone much too long—
+    Wait(5)
+    SmallWait(5)
+    ActionOverride("ohbbrodl",DisplayStringHead(Myself,92864))  // Shh! Be quiet! If that gets out, how long do you think it'll be before someone takes advantage of it?!
+    Wait(6)
+    SmallWait(5)
+    ActionOverride("ohbtartl",DisplayStringHead(Myself,92865))  // You don't understand! Dennaton sent the Hunters after somethin' big—really big—and now he's scared they've all been killed!
+    Wait(7)
+    ActionOverride("ohbbrodl",DisplayStringHead(Myself,92866))  // Yes, I heard you. EVERYONE heard you. Control yourself!
+    Wait(4)
+    SmallWait(8)
+    ActionOverride("ohbtartl",DisplayStringHead(Myself,92867))  // Gods, can you imagine if the slaves heard about this? Once again, I have to think of everything around here! Now I've got to go rally the guards in case anyone tries anything!
+    Wait(6)
+    SmallWait(5)
+    ActionOverride("ohbtartl",MoveToPoint([4000.3100]))
+    Wait(1)
+    ActionOverride("ohbberyl",ChangeAIScript("mage18c",CLASS))
+    ActionOverride("ohbberyl",MoveToPoint([4000.3150]))
+    ActionOverride("ohbarzol",MoveToPoint([4000.3050]))
+    Wait(3)
+    ActionOverride("ohbbrodl",FaceObject("ohbtartl"))  // Tartle
+    Wait(1)
+    ChangeEnemyAlly("ohblea",GOODCUTOFF)  // Lea Gosh'Aar
+    ChangeEnemyAlly("ohbvoghi",GOODCUTOFF)  // Voghiln the Vast
+    ChangeEnemyAlly("ohbgerro",GOODCUTOFF)  // Gerrold Darkfellow
+    ActionOverride("ohbellra",JumpToPoint([3920.2730]))
+    ActionOverride("ohbellra",Face(N))
+    ActionOverride("ohblea",EscapeAreaMove("zb8200",1385,955,E))  // TBP2 - Arena 1
+    ActionOverride("ohbvoghi",EscapeAreaMove("zb8200",1195,865,N))  // TBP2 - Arena 1
+    ActionOverride("ohbgerro",EscapeAreaMove("zb8200",1250,935,NE))  // TBP2 - Arena 1
+    ActionOverride("ohbtartl",EscapeAreaMove("zb8300",1115,1025,SW))  // TBP2 - Arena 2
+    ActionOverride("ohbarzol",EscapeAreaMove("zb8300",1065,975,SW))  // TBP2 - Arena 2
+    ActionOverride("ohbberyl",EscapeAreaMove("zb8300",1165,1075,SW))  // TBP2 - Arena 2
+    ActionOverride("ohbsymm",EscapeAreaMove("zb8300",850,975,S))  // TBP2 - Arena 2
+    Wait(1)
+    ActionOverride("ohbbrodl",DisplayStringHead(Myself,92868))  // Hmm...
+    Wait(2)
+    ActionOverride("ohbbrodl",FaceObject([PC]))
+    SmallWait(5)
+    ActionOverride("ohbbrodl",MoveToPoint([4590.3120]))
+    SmallWait(35)
+    ActionOverride("ohbbrodl",Face(E))
+    SmallWait(5)
+    ActionOverride("ohbbrodl",StartDialogueNoSet([PC]))
+END
+
+IF
+  Global("ohb_plot_cutscene","global",1)
+  GlobalLT("OHB_LAST_BATTLE","GLOBAL",404)
+  OR(2)
+    Global("ohb_item_reward","global",10)
+    Global("ohb_item_reward","global",11)
+THEN
+  RESPONSE #100
+    SetCursorState(TRUE)
+    SetGlobal("ohb_plot_cutscene","global",2)
+    ActionOverride("ohbbrodl",JumpToPoint([4160.3085]))
+    SmallWait(1)
+    ActionOverride("ohbbrodl",MoveToPoint([4615.3135]))
+    Wait(5)
+    SmallWait(5)
+    ActionOverride("ohbbrodl",StartDialogueNoSet([PC]))
+END
+
+IF
+  Global("OHB_BRODLE_BANREQUEST","global",1)
+  Global("ohb_plot_cutscene","global",1)
+  GlobalLT("OHB_LAST_BATTLE","GLOBAL",404)
+  GlobalGT("OHB_LAST_BATTLE","GLOBAL",204)
+THEN
+  RESPONSE #100
+    SetCursorState(TRUE)
+    SetGlobal("ohb_plot_cutscene","global",2)
+    SetGlobal("OHB_BRODLE_BANREQUEST","GLOBAL",2)
+    ActionOverride("ohbbrodl",JumpToPoint([4160.3085]))
+    SmallWait(1)
+    ActionOverride("ohbbrodl",MoveToPoint([4615.3135]))
+    Wait(5)
+    SmallWait(5)
+    ActionOverride("ohbbrodl",StartDialogueNoSet([PC]))
+END
+
+IF
+  Global("OHB_BRODLE_LIEUTENANT","global",1)
+  Global("ohb_plot_cutscene","global",1)
+  GlobalLT("OHB_LAST_BATTLE","GLOBAL",404)
+  GlobalGT("OHB_LAST_BATTLE","GLOBAL",204)
+THEN
+  RESPONSE #100
+    SetCursorState(TRUE)
+    SetGlobal("ohb_plot_cutscene","global",2)
+    SetGlobal("OHB_BRODLE_LIEUTENANT","GLOBAL",2)
+    ActionOverride("ohbbrodl",JumpToPoint([4160.3085]))
+    SmallWait(1)
+    ActionOverride("ohbbrodl",MoveToPoint([4615.3135]))
+    Wait(5)
+    SmallWait(5)
+    ActionOverride("ohbbrodl",StartDialogueNoSet([PC]))
+END
+
+IF
+  Global("ohb_plot_cutscene","global",1)
+THEN
+  RESPONSE #100
+    SetGlobal("ohb_plot_cutscene","global",0)
+END
+
+IF
+  Global("ohb_plot_cutscene","global",3)
+THEN
+  RESPONSE #100
+    SetGlobal("ohb_plot_cutscene","global",0)
+    SetCursorState(FALSE)
+    SetGlobal("ZB_NEPH_CHECK","GLOBAL",1)
+END
+
+/// Post Interjections ///
+/// After match 1
+IF
+  Global("ZB_NEPH_CHECK","GLOBAL",1)
+  Global("ZB_NEPH_POST_INTERJECT_1","GLOBAL",1)
+THEN
+  RESPONSE #100
+    SetGlobal("ZB_NEPH_POST_INTERJECT_1","GLOBAL",2)
+    SetGlobal("ZB_NEPH_CHECK","GLOBAL",0)
+END
+/// After match 2
+IF
+  Global("ZB_NEPH_CHECK","GLOBAL",1)
+  Global("ZB_NEPH_POST_INTERJECT_2","GLOBAL",1)
+THEN
+  RESPONSE #100
+    SetGlobal("ZB_NEPH_POST_INTERJECT_2","GLOBAL",2)
+    SetGlobal("ZB_NEPH_CHECK","GLOBAL",0)
+END
+/// After match 3
+IF
+  Global("ZB_NEPH_CHECK","GLOBAL",1)
+  Global("ZB_NEPH_POST_INTERJECT_3","GLOBAL",1)
+THEN
+  RESPONSE #100
+    SetGlobal("ZB_NEPH_POST_INTERJECT_3","GLOBAL",2)
+    SetGlobal("ZB_NEPH_CHECK","GLOBAL",0)
+END
+/// After match 4
+IF
+  Global("ZB_NEPH_CHECK","GLOBAL",1)
+  Global("ZB_NEPH_POST_INTERJECT_4","GLOBAL",1)
+THEN
+  RESPONSE #100
+    SetGlobal("ZB_NEPH_POST_INTERJECT_4","GLOBAL",2)
+    SetGlobal("ZB_NEPH_CHECK","GLOBAL",0)
+END
+/// After match 5
+IF
+  Global("ZB_NEPH_CHECK","GLOBAL",1)
+  Global("ZB_NEPH_POST_INTERJECT_5","GLOBAL",1)
+THEN
+  RESPONSE #100
+    SetGlobal("ZB_NEPH_POST_INTERJECT_5","GLOBAL",2)
+    SetGlobal("ZB_NEPH_CHECK","GLOBAL",0)
+END
+/// --reset otherwise
+IF
+  Global("ZB_NEPH_CHECK","GLOBAL",1)
+  OR(5)
+    GlobalGT("ZB_NEPH_POST_INTERJECT_1","GLOBAL",1)
+    GlobalGT("ZB_NEPH_POST_INTERJECT_2","GLOBAL",1)
+    GlobalGT("ZB_NEPH_POST_INTERJECT_3","GLOBAL",1)
+    GlobalGT("ZB_NEPH_POST_INTERJECT_4","GLOBAL",1)
+    GlobalGT("ZB_NEPH_POST_INTERJECT_5","GLOBAL",1)
+THEN
+  RESPONSE #100
+    SetGlobal("ZB_NEPH_CHECK","GLOBAL",0)
+END
+///
+
+IF
+  Global("ohb_battle_xp_award","global",1)
+THEN
+  RESPONSE #100
+    SetGlobal("ohb_battle_xp_award","global",0)
+    AddXPObject(Player1,10000)
+    AddXPObject(Player2,10000)
+    AddXPObject(Player3,10000)
+    AddXPObject(Player4,10000)
+    AddXPObject(Player5,10000)
+    AddXPObject(Player6,10000)
+END
+IF
+  Global("ohb_battle_xp_award","global",2)
+THEN
+  RESPONSE #100
+    SetGlobal("ohb_battle_xp_award","global",0)
+    AddXPObject(Player1,12000)
+    AddXPObject(Player2,12000)
+    AddXPObject(Player3,12000)
+    AddXPObject(Player4,12000)
+    AddXPObject(Player5,12000)
+    AddXPObject(Player6,12000)
+END
+IF
+  Global("ohb_battle_xp_award","global",3)
+THEN
+  RESPONSE #100
+    SetGlobal("ohb_battle_xp_award","global",0)
+    AddXPObject(Player1,15000)
+    AddXPObject(Player2,15000)
+    AddXPObject(Player3,15000)
+    AddXPObject(Player4,15000)
+    AddXPObject(Player5,15000)
+    AddXPObject(Player6,15000)
+END
+IF
+  Global("ohb_battle_xp_award","global",4)
+THEN
+  RESPONSE #100
+    SetGlobal("ohb_battle_xp_award","global",0)
+    AddXPObject(Player1,15000)
+    AddXPObject(Player2,15000)
+    AddXPObject(Player3,15000)
+    AddXPObject(Player4,15000)
+    AddXPObject(Player5,15000)
+    AddXPObject(Player6,15000)
+END
+IF
+  Global("ohb_battle_xp_award","global",5)
+THEN
+  RESPONSE #100
+    SetGlobal("ohb_battle_xp_award","global",0)
+    AddXPObject(Player1,18000)
+    AddXPObject(Player2,18000)
+    AddXPObject(Player3,18000)
+    AddXPObject(Player4,18000)
+    AddXPObject(Player5,18000)
+    AddXPObject(Player6,18000)
+END
+
+IF
+  Global("ohb_battle_xp_award","global",500000)
+THEN
+  RESPONSE #100
+    SetGlobal("ohb_battle_xp_award","global",0)
+    AddXPObject(Player1,500000)
+    AddXPObject(Player2,500000)
+    AddXPObject(Player3,500000)
+    AddXPObject(Player4,500000)
+    AddXPObject(Player5,500000)
+    AddXPObject(Player6,500000)
+END
+
+IF
+  Global("ohb_battle_xp_award","global",250000)
+THEN
+  RESPONSE #100
+    SetGlobal("ohb_battle_xp_award","global",0)
+    AddXPObject(Player1,250000)
+    AddXPObject(Player2,250000)
+    AddXPObject(Player3,250000)
+    AddXPObject(Player4,250000)
+    AddXPObject(Player5,250000)
+    AddXPObject(Player6,250000)
+END
+
+IF
+  Global("ohb_battle_xp_award","global",30000)
+THEN
+  RESPONSE #100
+    SetGlobal("ohb_battle_xp_award","global",0)
+    AddXPObject(Player1,30000)
+    AddXPObject(Player2,30000)
+    AddXPObject(Player3,30000)
+    AddXPObject(Player4,30000)
+    AddXPObject(Player5,30000)
+    AddXPObject(Player6,30000)
+END
+
+IF
+  Global("ohb_battle_xp_award","global",25000)
+THEN
+  RESPONSE #100
+    SetGlobal("ohb_battle_xp_award","global",0)
+    AddXPObject(Player1,25000)
+    AddXPObject(Player2,25000)
+    AddXPObject(Player3,25000)
+    AddXPObject(Player4,25000)
+    AddXPObject(Player5,25000)
+    AddXPObject(Player6,25000)
+END
+
+IF
+  Global("ohb_battle_xp_award","global",15000)
+THEN
+  RESPONSE #100
+    SetGlobal("ohb_battle_xp_award","global",0)
+    AddXPObject(Player1,15000)
+    AddXPObject(Player2,15000)
+    AddXPObject(Player3,15000)
+    AddXPObject(Player4,15000)
+    AddXPObject(Player5,15000)
+    AddXPObject(Player6,15000)
+END
+
+IF
+  Global("ohb_battle_xp_award","global",10000)
+THEN
+  RESPONSE #100
+    SetGlobal("ohb_battle_xp_award","global",0)
+    AddXPObject(Player1,10000)
+    AddXPObject(Player2,10000)
+    AddXPObject(Player3,10000)
+    AddXPObject(Player4,10000)
+    AddXPObject(Player5,10000)
+    AddXPObject(Player6,10000)
+END
+
+IF
+  Global("ohb_battle_xp_award","global",5000)
+THEN
+  RESPONSE #100
+    SetGlobal("ohb_battle_xp_award","global",0)
+    AddXPObject(Player1,5000)
+    AddXPObject(Player2,5000)
+    AddXPObject(Player3,5000)
+    AddXPObject(Player4,5000)
+    AddXPObject(Player5,5000)
+    AddXPObject(Player6,5000)
+END
+
+IF
+  Global("OHB_FOOD_FIGHT","MYAREA",1)
+THEN
+  RESPONSE #100
+    ClearAllActions()
+    SetGlobal("OHB_FOOD_FIGHT","MYAREA",2)
+    TriggerActivation("ohb_messhall1",TRUE)
+    TriggerActivation("ohb_messhall2",TRUE)
+    CreateCreature("ohbdenna",[2530.3265],SE)  // Dennaton
+    CreateCreature("zbneph",[2987.3288],NW)  /* Nephetel, Welcoming Feast */
+    ActionOverride("OHBTARTL",JumpToPoint([2570.3232]))
+    ActionOverride("OHBTARTL",Face(SSE))
+    ActionOverride("ohbcook",JumpToPoint([2375.3385]))
+    ActionOverride("ohbcook",Face(SSE))
+    ActionOverride("ohbdulf",JumpToPoint([2510.3435]))
+    ActionOverride("ohbellra",JumpToPoint([2555.3455]))
+    ActionOverride("ohbtimmo",JumpToPoint([2455.3475]))
+    ActionOverride("ohbmercy",JumpToPoint([2500.3495]))
+    ActionOverride("ohbvoghi",JumpToPoint([2775.3250]))
+    ActionOverride("ohbfeldr",JumpToPoint([2825.3265]))
+    ActionOverride("ohbgezzt",JumpToPoint([2900.3350]))
+    ActionOverride("ohbhort",JumpToPoint([2835.3205]))
+    ActionOverride("ohbvoghi",DestroyItem("amul28"))  // Amulet of the Master Harper
+    ActionOverride("ohbfeldr",DestroyItem("amul26"))  // Amulet of Cheetah Speed
+    ActionOverride("ohbfeldr",DestroyItem("sw1h10"))  // The Shadow's Blade +3
+    GiveItemCreate("sw1h10","ohbfeldr",1,0,0)  // The Shadow's Blade +3
+    ActionOverride("ohbdulf",Face(N))
+    ActionOverride("ohbellra",Face(N))
+    ActionOverride("ohbgezzt",Face(W))
+    ActionOverride("ohbmercy",Face(N))
+    ActionOverride("ohbhort",Face(W))
+    ActionOverride("ohbfeldr",Face(W))
+    ActionOverride("ohbtimmo",Face(N))
+    ActionOverride("ohbvoghi",Face(W))
+    ActionOverride("ohblea",Face(N))
+END
+
+IF
+  !StateCheck(Player1,CD_STATE_NOTVALID)
+  Global("ZB_NEPH_BEGIN","GLOBAL",0)
+  Global("ZB_MOVED_NEPH","GLOBAL",1)
+THEN
+  RESPONSE #100
+    SetGlobal("ZB_NEPH_BEGIN","GLOBAL",1)
+    ActionOverride("zbneph",StartDialogueNoSet([PC]))
+END
+
+/// Match 1 ///
+/// Before match 1
+IF
+  !StateCheck(Player1,CD_STATE_NOTVALID)
+  Global("ZB_NEPH_INTERJECT_1","GLOBAL",1)
+THEN
+  RESPONSE #100
+  SetGlobal("ZB_NEPH_INTERJECT_1","GLOBAL",2)
+  ActionOverride("zbneph",FaceObject([PC]))
+  SmallWait(5)
+  ActionOverride("zbneph",StartDialogInterrupt("ZBNEPHJ",[PC]))
+END
+
+IF
+  !StateCheck(Player1,CD_STATE_NOTVALID)
+  Global("ZB_NEPH_INTERJECT_1","GLOBAL",3)
+THEN
+  RESPONSE #100
+  SetGlobal("ZB_NEPH_INTERJECT_1","GLOBAL",4)
+  ClearActions("zbneph")
+  ActionOverride("zbneph",SetDialog("ZBNEPH"))
+  SetCutSceneLite(TRUE)
+  SetGlobal("OHB_START_BATTLE","GLOBAL",1)
+  SetGlobal("OHB_101","GLOBAL",1)
+  SetGlobal("OHB_ARENA","GLOBAL",1)
+END
+/// After match 1
+IF
+  Global("ZB_NEPH_POST_INTERJECT_1","GLOBAL",2)
+THEN
+  RESPONSE #100
+  SetGlobal("ZB_NEPH_POST_INTERJECT_1","GLOBAL",3)
+  ClearActions("zbneph")
+  ActionOverride("zbneph",FaceObject([PC]))
+  SmallWait(25)
+  ActionOverride("zbneph",StartDialogInterrupt("ZBNEPHJ",[PC]))
+END
+
+IF
+  Global("ZB_NEPH_POST_INTERJECT_1","GLOBAL",4)
+THEN
+  RESPONSE #100
+  SetGlobal("ZB_NEPH_POST_INTERJECT_1","GLOBAL",5)
+  ClearActions("zbneph")
+  ActionOverride("zbneph",SetDialog("ZBNEPH"))
+  SetGlobal("OHB_INTERVIEW","GLOBAL",1)
+END
+///
+
+/// Match 2 ///
+/// Before match 2
+/// After match 2
+IF
+  !StateCheck(Player1,CD_STATE_NOTVALID)
+  Global("ZB_NEPH_POST_INTERJECT_2","GLOBAL",2)
+THEN
+  RESPONSE #100
+  SetGlobal("ZB_NEPH_POST_INTERJECT_2","GLOBAL",3)
+  ClearActions("zbneph")
+  ActionOverride("zbneph",FaceObject([PC]))
+  SmallWait(25)
+  ActionOverride("zbneph",StartDialogInterrupt("ZBNEPHJ",[PC]))
+END
+
+IF
+  Global("ZB_NEPH_POST_INTERJECT_2","GLOBAL",4)
+THEN
+  RESPONSE #100
+  SetGlobal("ZB_NEPH_POST_INTERJECT_2","GLOBAL",5)
+  ClearActions("zbneph")
+  ActionOverride("zbneph",SetDialog("ZBNEPH"))
+  SetGlobal("OHB_INTERVIEW","GLOBAL",1)
+END
+///
+
+/// Match 3 ///
+/// Before match 3
+IF
+  !StateCheck(Player1,CD_STATE_NOTVALID)
+  Global("ZB_NEPH_INTERJECT_3","GLOBAL",1)
+THEN
+  RESPONSE #100
+  SetGlobal("ZB_NEPH_INTERJECT_3","GLOBAL",2)
+  ClearActions("zbneph")
+  ActionOverride("zbneph",FaceObject([PC]))
+  SmallWait(25)
+  ActionOverride("zbneph",StartDialogInterrupt("ZBNEPHJ",[PC]))
+END
+
+IF
+  !StateCheck(Player1,CD_STATE_NOTVALID)
+  Global("ZB_NEPH_INTERJECT_3","GLOBAL",3)
+THEN
+  RESPONSE #100
+  SetGlobal("ZB_NEPH_INTERJECT_3","GLOBAL",4)
+  ClearActions("zbneph")
+  ActionOverride("zbneph",SetDialog("ZBNEPH"))
+  SetCutSceneLite(TRUE)
+  SetGlobal("OHB_START_BATTLE","GLOBAL",1)
+  SetGlobal("OHB_103","GLOBAL",1)
+  SetGlobal("OHB_ARENA","GLOBAL",3)
+END
+/// After match 3
+IF
+  Global("ZB_NEPH_POST_INTERJECT_3","GLOBAL",2)
+THEN
+  RESPONSE #100
+  SetGlobal("ZB_NEPH_POST_INTERJECT_3","GLOBAL",3)
+  ClearActions("zbneph")
+  ActionOverride("zbneph",FaceObject([PC]))
+  SmallWait(25)
+  ActionOverride("zbneph",StartDialogInterrupt("ZBNEPHJ",[PC]))
+END
+
+IF
+  Global("ZB_NEPH_POST_INTERJECT_3","GLOBAL",4)
+THEN
+  RESPONSE #100
+  SetGlobal("ZB_NEPH_POST_INTERJECT_3","GLOBAL",5)
+  ClearActions("zbneph")
+  ActionOverride("zbneph",SetDialog("ZBNEPH"))
+  SetGlobal("OHB_INTERVIEW","GLOBAL",1)
+END
+///
+
+/// Match 4 ///
+/// Before match 4
+IF
+  !StateCheck(Player1,CD_STATE_NOTVALID)
+  Global("ZB_NEPH_INTERJECT_4","GLOBAL",1)
+THEN
+  RESPONSE #100
+  SetGlobal("ZB_NEPH_INTERJECT_4","GLOBAL",2)
+  ClearActions("zbneph")
+  ActionOverride("zbneph",FaceObject([PC]))
+  SmallWait(25)
+  ActionOverride("zbneph",StartDialogInterrupt("ZBNEPHJ",[PC]))
+END
+
+IF
+  !StateCheck(Player1,CD_STATE_NOTVALID)
+  Global("ZB_NEPH_INTERJECT_4","GLOBAL",3)
+THEN
+  RESPONSE #100
+  SetGlobal("ZB_NEPH_INTERJECT_4","GLOBAL",4)
+  ClearActions("zbneph")
+  ActionOverride("zbneph",SetDialog("ZBNEPH"))
+  SetCutSceneLite(TRUE)
+  SetGlobal("OHB_START_BATTLE","GLOBAL",1)
+  SetGlobal("OHB_104","GLOBAL",1)
+  SetGlobal("OHB_ARENA","GLOBAL",3)
+END
+
+/// After match 4
+IF
+  Global("ZB_NEPH_POST_INTERJECT_4","GLOBAL",2)
+THEN
+  RESPONSE #100
+  SetGlobal("ZB_NEPH_POST_INTERJECT_4","GLOBAL",3)
+  ClearActions("zbneph")
+  ActionOverride("zbneph",FaceObject([PC]))
+  SmallWait(25)
+  ActionOverride("zbneph",StartDialogInterrupt("ZBNEPHJ",[PC]))
+END
+
+IF
+  Global("ZB_NEPH_POST_INTERJECT_4","GLOBAL",4)
+THEN
+  RESPONSE #100
+  SetGlobal("ZB_NEPH_POST_INTERJECT_4","GLOBAL",5)
+  ClearActions("zbneph")
+  ActionOverride("zbneph",SetDialog("ZBNEPH"))
+  SetGlobal("OHB_INTERVIEW","GLOBAL",1)
+END
+///
+
+/// Match 5 ///
+/// Before match 5
+IF
+  !StateCheck(Player1,CD_STATE_NOTVALID)
+  Global("ZB_NEPH_INTERJECT_5","GLOBAL",1)
+THEN
+  RESPONSE #100
+  SetGlobal("ZB_NEPH_INTERJECT_5","GLOBAL",2)
+  ClearActions("zbneph")
+  ActionOverride("zbneph",FaceObject([PC]))
+  SmallWait(25)
+  ActionOverride("zbneph",StartDialogInterrupt("ZBNEPHJ",[PC]))
+END
+
+IF
+  !StateCheck(Player1,CD_STATE_NOTVALID)
+  Global("ZB_NEPH_INTERJECT_5","GLOBAL",3)
+THEN
+  RESPONSE #100
+  SetGlobal("ZB_NEPH_INTERJECT_5","GLOBAL",4)
+  ClearActions("zbneph")
+  ActionOverride("zbneph",SetDialog("ZBNEPH"))
+  SetCutSceneLite(TRUE)
+  SetGlobal("OHB_START_BATTLE","GLOBAL",1)
+  SetGlobal("OHB_105","GLOBAL",1)
+  SetGlobal("OHB_ARENA","GLOBAL",3)
+END
+
+/// After match 5
+IF
+  !StateCheck(Player1,CD_STATE_NOTVALID)
+  Global("ZB_NEPH_POST_INTERJECT_5","GLOBAL",2)
+  Global("ZB_NEPH_INTRO_RESPONSE","GLOBAL",11)
+  Global("ZB_NEPH_ESCAPE_0","GLOBAL",0)
+THEN
+  RESPONSE #100
+    SetGlobal("ZB_NEPH_ESCAPE_0","GLOBAL",1)
+    ClearActions("zbneph")
+    ActionOverride("zbneph",SetDialog("ZBNEPH"))
+    ActionOverride("zbneph",FaceObject([PC]))
+    SmallWait(25)
+    ActionOverride("zbneph",StartDialogInterrupt("ZBNEPH", [PC]))
+END
+///
+
+IF
+  Global("OHB_START_BATTLE","GLOBAL",1)
+  Global("ohb_plot_cutscene","global",0)
+THEN
+  RESPONSE #100
+    SetGlobal("OHB_BATTLE_COMPLETE","GLOBAL",0)
+    ClearAllActions()
+    Continue()
+END
+
+IF
+  Global("OHB_START_BATTLE","GLOBAL",1)
+  Global("OHB_ARENA","GLOBAL",1)
+  Global("ohb_plot_cutscene","global",0)
+THEN
+  RESPONSE #100
+    StartCutSceneMode()
+    StartCutScene("ohbaren2")
+END
+
+IF
+  Global("OHB_START_BATTLE","GLOBAL",1)
+  Global("OHB_ARENA","GLOBAL",2)
+  Global("ohb_plot_cutscene","global",0)
+THEN
+  RESPONSE #100
+    StartCutSceneMode()
+    StartCutScene("ohbaren3")
+END
+
+IF
+  Global("OHB_START_BATTLE","GLOBAL",1)
+  Global("OHB_ARENA","GLOBAL",3)
+  Global("ohb_plot_cutscene","global",0)
+THEN
+  RESPONSE #100
+    StartCutSceneMode()
+    StartCutScene("ohbaren4")
+END
+
+IF
+  Global("ohb_finale","global",2)
+  GlobalLT("ohb_leokas_bribe","global",5)
+  Dead("ohbleoka")  // Leokas
+  CombatCounter(0)
+THEN
+  RESPONSE #100
+    SetGlobal("ohb_finale","global",3)
+END
+
+IF
+  OR(2)
+    Global("ohb_finale","global",2)
+    Global("ohb_finale","global",3)
+  PartyHasItem("ohbkey03")  // Guard Captain's Key
+THEN
+  RESPONSE #100
+    SetGlobal("ohb_finale","global",4)
+END
+
+IF
+  Global("OHB_BRODLE_LIEUTENANT","GLOBAL",3)
+THEN
+  RESPONSE #100
+    CreateCreature("ohbleoka",[580.2445],SE)  // Leokas
+    SetGlobal("OHB_BRODLE_LIEUTENANT","GLOBAL",4)
+END
+
+IF
+  Global("TIER","GLOBAL",0)
+  GlobalGT("OHB_FOOD_FIGHT","MYAREA",3)
+THEN
+  RESPONSE #100
+    SetInterrupt(FALSE)
+    SetGlobal("TIER","GLOBAL",1)
+    SetGlobal("BLACK_PITS","GLOBAL",1)
+    SetInterrupt(TRUE)
+END
+
+IF
+  Global("TIER","GLOBAL",1)
+  GlobalGT("OHB_LAST_BATTLE","GLOBAL",104)
+THEN
+  RESPONSE #100
+    SetInterrupt(FALSE)
+    SetGlobal("TIER","GLOBAL",2)
+    SetGlobal("BLACK_PITS","GLOBAL",2)
+    CreateCreature("ohbdrgd",[444.2544],SW)  // Guard
+    AddStoreItem("OHBSDWM","zbfmaw",1,1)  // Festering Maw +3 (NEW)
+    AddStoreItem("OHBSDWM","zbmasto0",1,1)  // Mastadon +3 (NEW)
+    AddStoreItem("OHBIMIM","CLCK15",1,1)  // Robe of the Good Archmagi
+    AddStoreItem("OHBIMIM","CLCK16",1,1)  // Robe of the Neutral Archmagi
+    AddStoreItem("OHBIMIM","CLCK17",1,1)  // Robe of the Evil Archmagi
+    AddStoreItem("OHBIMIM","CLCK23",1,1)  // Cloak of Elvenkind
+    AddStoreItem("OHBIMIM","BOOT07",1,1)  // Boots of Elvenkind
+    AddStoreItem("OHBIMIM","BRAC13",3,1)  // Bracers of Defense AC 5
+    AddStoreItem("OHBIMIM","BRAC14",2,1)  // Bracers of Defense AC 4
+    AddStoreItem("OHBIMIM","BRAC15",1,1)  // Bracers of Defense AC 3
+    AddStoreItem("OHBIMIM","RING31",1,1)  // Ring of Regeneration
+    AddStoreItem("OHBIMIM","RODS03",5,1)  // Rod of Resurrection
+    AddStoreItem("OHBIMIM","zbruin01",1,1)  // Belt of Ruinous Rage (NEW)
+    AddStoreItem("OHBIMIM","zbdarkk0",1,1)  // Dark Knight Belt (NEW)
+    AddStoreItem("OHBCONCO","POTN55",0,1)  // Potion of Superior Healing
+    AddStoreItem("OHBSDWM","AROW06",5,1)  // Arrow of Detonation
+    AddStoreItem("OHBSDWM","AROW07",10,1)  // Arrow of Dispelling
+    AddStoreItem("OHBCONCO","POTN03",10,1)  // Potion of Hill Giant Strength
+    AddStoreItem("OHBCONCO","POTN12",5,1)  // Potion of Stone Giant Strength
+    AddStoreItem("OHBCONCO","POTN04",4,1)  // Potion of Frost Giant Strength
+    AddStoreItem("OHBCONCO","POTN05",3,1)  // Potion of Fire Giant Strength
+    AddStoreItem("OHBCONCO","POTN06",2,1)  // Potion of Cloud Giant Strength
+    AddStoreItem("OHBCONCO","POTN07",1,1)  // Potion of Storm Giant Strength
+    AddStoreItem("OHBCONCO","POTN09",10,1)  // Potion of Heroism
+    AddStoreItem("OHBCONCO","POTN14",5,1)  // Oil of Speed
+    AddStoreItem("OHBCONCO","POTN41",5,1)  // Potion of Power
+    AddStoreItem("OHBCONCO","POTN34",5,1)  // Potion of Magic Protection
+    AddStoreItem("OHBCONCO","POTN35",5,1)  // Potion of Magic Shielding
+    AddStoreItem("OHBCONCO","POTN11",5,1)  // Potion of Invulnerability
+    AddStoreItem("OHBCONCO","POTN10",15,1)  // Potion of Invisibility
+    AddStoreItem("OHBCONCO","POTN21",10,1)  // Potion of Clarity
+    AddStoreItem("OHBCONCO","POTN45",10,1)  // Potion of Freedom
+    SetInterrupt(TRUE)
+END
+
+IF
+  Global("TIER","GLOBAL",2)
+  GlobalGT("OHB_LAST_BATTLE","GLOBAL",204)
+THEN
+  RESPONSE #100
+    SetInterrupt(FALSE)
+    SetGlobal("TIER","GLOBAL",3)
+    AddStoreItem("OHBSDWM","HAMM06",1,1)  // Dwarven Thrower +3
+    AddStoreItem("OHBSDWM","STAF12",10,1)  // Staff of Power
+    AddStoreItem("OHBIMIM","RING33",1,1)  // Ring of the Ram
+    AddStoreItem("OHBIMIM","RING27",1,1)  // Ring of Fire Control
+    AddStoreItem("OHBIMIM","RING46",1,1)  // Ring of Anti-Venom
+    AddStoreItem("OHBSDWM","AROW06",5,1)  // Arrow of Detonation
+    AddStoreItem("OHBSDWM","AROW07",10,1)  // Arrow of Dispelling
+    AddStoreItem("OHBCONCO","POTN03",10,1)  // Potion of Hill Giant Strength
+    AddStoreItem("OHBCONCO","POTN12",5,1)  // Potion of Stone Giant Strength
+    AddStoreItem("OHBCONCO","POTN04",4,1)  // Potion of Frost Giant Strength
+    AddStoreItem("OHBCONCO","POTN05",3,1)  // Potion of Fire Giant Strength
+    AddStoreItem("OHBCONCO","POTN06",2,1)  // Potion of Cloud Giant Strength
+    AddStoreItem("OHBCONCO","POTN07",1,1)  // Potion of Storm Giant Strength
+    AddStoreItem("OHBCONCO","POTN09",10,1)  // Potion of Heroism
+    AddStoreItem("OHBCONCO","POTN14",5,1)  // Oil of Speed
+    AddStoreItem("OHBCONCO","POTN41",5,1)  // Potion of Power
+    AddStoreItem("OHBCONCO","POTN34",5,1)  // Potion of Magic Protection
+    AddStoreItem("OHBCONCO","POTN35",5,1)  // Potion of Magic Shielding
+    AddStoreItem("OHBCONCO","POTN11",5,1)  // Potion of Invulnerability
+    AddStoreItem("OHBCONCO","POTN10",15,1)  // Potion of Invisibility
+    AddStoreItem("OHBCONCO","POTN21",10,1)  // Potion of Clarity
+    AddStoreItem("OHBCONCO","POTN45",10,1)  // Potion of Freedom
+    SetInterrupt(TRUE)
+END
+
+IF
+  Global("TIER","GLOBAL",3)
+  GlobalGT("OHB_LAST_BATTLE","GLOBAL",304)
+THEN
+  RESPONSE #100
+    SetInterrupt(FALSE)
+    SetGlobal("TIER","GLOBAL",4)
+    SetGlobal("BLACK_PITS","GLOBAL",4)
+    AddStoreItem("OHBSDWM","DAGG20",1,1)  // Life-Stealer +4
+    AddStoreItem("OHBSDWM","OHAROW50",0,1)  // Arrow +4
+    AddStoreItem("OHBSDWM","OHBOLT50",0,1)  // Bolt +4
+    AddStoreItem("OHBIMIM","AMUL17",10,1)  // Greenstone Amulet
+    AddStoreItem("OHBIMIM","RING08",1,1)  // Reaching Ring
+    AddStoreItem("OHBSDWM","AROW06",5,1)  // Arrow of Detonation
+    AddStoreItem("OHBSDWM","AROW07",10,1)  // Arrow of Dispelling
+    AddStoreItem("OHBCONCO","POTN03",10,1)  // Potion of Hill Giant Strength
+    AddStoreItem("OHBCONCO","POTN12",5,1)  // Potion of Stone Giant Strength
+    AddStoreItem("OHBCONCO","POTN04",4,1)  // Potion of Frost Giant Strength
+    AddStoreItem("OHBCONCO","POTN05",3,1)  // Potion of Fire Giant Strength
+    AddStoreItem("OHBCONCO","POTN06",2,1)  // Potion of Cloud Giant Strength
+    AddStoreItem("OHBCONCO","POTN07",1,1)  // Potion of Storm Giant Strength
+    AddStoreItem("OHBCONCO","POTN09",10,1)  // Potion of Heroism
+    AddStoreItem("OHBCONCO","POTN14",5,1)  // Oil of Speed
+    AddStoreItem("OHBCONCO","POTN41",5,1)  // Potion of Power
+    AddStoreItem("OHBCONCO","POTN34",5,1)  // Potion of Magic Protection
+    AddStoreItem("OHBCONCO","POTN35",5,1)  // Potion of Magic Shielding
+    AddStoreItem("OHBCONCO","POTN11",5,1)  // Potion of Invulnerability
+    AddStoreItem("OHBCONCO","POTN10",15,1)  // Potion of Invisibility
+    AddStoreItem("OHBCONCO","POTN21",10,1)  // Potion of Clarity
+    AddStoreItem("OHBCONCO","POTN45",10,1)  // Potion of Freedom
+    SetInterrupt(TRUE)
+END
+
+IF
+  Global("TIER","GLOBAL",4)
+  GlobalGT("OHB_LAST_BATTLE","GLOBAL",403)
+  Global("OHB_final_restock","GLOBAL",0)
+THEN
+  RESPONSE #100
+    SetInterrupt(FALSE)
+    SetGlobal("OHB_final_restock","GLOBAL",1)
+    AddStoreItem("OHBSDWM","AROW06",5,1)  // Arrow of Detonation
+    AddStoreItem("OHBSDWM","AROW07",10,1)  // Arrow of Dispelling
+    AddStoreItem("OHBCONCO","POTN03",10,1)  // Potion of Hill Giant Strength
+    AddStoreItem("OHBCONCO","POTN12",5,1)  // Potion of Stone Giant Strength
+    AddStoreItem("OHBCONCO","POTN04",4,1)  // Potion of Frost Giant Strength
+    AddStoreItem("OHBCONCO","POTN05",3,1)  // Potion of Fire Giant Strength
+    AddStoreItem("OHBCONCO","POTN06",2,1)  // Potion of Cloud Giant Strength
+    AddStoreItem("OHBCONCO","POTN07",1,1)  // Potion of Storm Giant Strength
+    AddStoreItem("OHBCONCO","POTN09",10,1)  // Potion of Heroism
+    AddStoreItem("OHBCONCO","POTN14",5,1)  // Oil of Speed
+    AddStoreItem("OHBCONCO","POTN41",5,1)  // Potion of Power
+    AddStoreItem("OHBCONCO","POTN34",5,1)  // Potion of Magic Protection
+    AddStoreItem("OHBCONCO","POTN35",5,1)  // Potion of Magic Shielding
+    AddStoreItem("OHBCONCO","POTN11",5,1)  // Potion of Invulnerability
+    AddStoreItem("OHBCONCO","POTN10",15,1)  // Potion of Invisibility
+    AddStoreItem("OHBCONCO","POTN21",10,1)  // Potion of Clarity
+    AddStoreItem("OHBCONCO","POTN45",10,1)  // Potion of Freedom
+    SetInterrupt(TRUE)
+END
+
+IF
+  Global("ohb_rat_droppings","global",1)
+THEN
+  RESPONSE #100
+    SetInterrupt(FALSE)
+    SetGlobal("ohb_rat_droppings","global",2)
+    AddStoreItem("OHBCONCO","ohbcom04",1,1)  // Rat Droppings
+    AddStoreItem("OHBmolza","ohbcom10",1,1)  // Powdered Quartz
+    CreateCreature("rat",[1600.3485],S)  // Rat
+    SmallWait(5)
+    ActionOverride("rat",GiveItemCreate("ohbcom04",Myself,1,0,0))  // Rat Droppings
+    SmallWait(1)
+    ActionOverride("rat",DropInventory())
+    SmallWait(1)
+    ActionOverride("rat",DestroySelf())
+    SetInterrupt(TRUE)
+END
+
+IF
+  GlobalGT("OHB_GEZZT_POISON","GLOBAL",0)
+  Global("ohb_lotus_root","global",0)
+THEN
+  RESPONSE #100
+    SetGlobal("ohb_lotus_root","global",1)
+    AddStoreItem("OHBCONCO","ohbcom03",1,1)  // Lotus Root
+    AddStoreItem("OHBmolza","ohbptn09",1,1)  // Distilled Alcohol
+END
+
+IF
+  GlobalGT("OHB_FELDR_POISON","GLOBAL",0)
+  Global("ohb_rose_petals","global",0)
+THEN
+  RESPONSE #100
+    SetGlobal("ohb_rose_petals","global",1)
+    AddStoreItem("OHBMOLZA","ohbcom09",1,1)  // Rose Petals
+    AddStoreItem("OHBconco","ohbptn08",1,1)  // Wine Vinegar
+END
+
+IF
+  Global("ohb_barkskin_potion","zb8100",1)  // TBP2 - Staging Area Map
+THEN
+  RESPONSE #100
+    SetGlobal("ohb_barkskin_potion","zb8100",1)  // TBP2 - Staging Area Map
+    AddStoreItem("OHBMOLZA","ohbptn01",1,1)  // Potion of Barkskin
+END
+
+IF
+  GlobalGT("OHB_final_restock","GLOBAL",0)
+  Global("OHB_WINGED_GAUNTLET","GLOBAL",0)
+  Contains("OHBGLOV1","Winged Chest")  // The Winged's Gauntlet
+THEN
+  RESPONSE #100
+    SetGlobal("OHB_WINGED_GAUNTLET","GLOBAL",2)
+    ActionOverride("Winged Chest",DestroyItem("OHBGLOV1"))  // The Winged's Gauntlet
+END
+
+IF
+  Global("OHB_WINGED_GAUNTLET","GLOBAL",0)
+  !Contains("OHBGLOV1","Winged Chest")  // The Winged's Gauntlet
+THEN
+  RESPONSE #100
+    SetGlobal("OHB_WINGED_GAUNTLET","GLOBAL",1)
+END
+
+IF
+  Global("OHB_WINGED_GAUNTLET","GLOBAL",1)
+  Contains("OHBGLOV1","Winged Chest")  // The Winged's Gauntlet
+THEN
+  RESPONSE #100
+    SetGlobal("OHB_WINGED_GAUNTLET","GLOBAL",0)
+END

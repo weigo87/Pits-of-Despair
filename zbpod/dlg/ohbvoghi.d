@@ -549,30 +549,30 @@ StartCutScene("ohbcut13")
 ~ EXIT
 END
 
-IF ~  Global("ohb_finale_arena","oh8200",4)
+IF ~  Global("ohb_finale_arena","ZB8200",4)
 ~ THEN BEGIN 63
   SAY @3660 /* You have my thanks, <CHARNAME>, and my word is true! I will return to the pits and slaughter the rest of the guards, but I want you to have these. Where you are going, you will need them more than I. */
   IF ~~ THEN DO ~ClearAllActions()
-SetGlobal("ohb_finale_arena","oh8200",5)
+SetGlobal("ohb_finale_arena","ZB8200",5)
 GiveItemCreate("potn18",LastTalkedToBy,1,0,0)
 GiveItemCreate("potn14",LastTalkedToBy,1,0,0)
-EscapeAreaMove("oh8100",4015,3145,W)
+EscapeAreaMove("ZB8100",4015,3145,W)
 ~ EXIT
   IF ~  InMyArea("ohblea")
 !Dead("ohblea")
 ~ THEN DO ~ClearAllActions()
-SetGlobal("ohb_finale_arena","oh8200",5)
+SetGlobal("ohb_finale_arena","ZB8200",5)
 GiveItemCreate("potn18",LastTalkedToBy,1,0,0)
 GiveItemCreate("potn14",LastTalkedToBy,1,0,0)
-EscapeAreaMove("oh8100",4015,3145,W)
+EscapeAreaMove("ZB8100",4015,3145,W)
 ~ EXTERN ~OHBLEA~ 16
   IF ~  InMyArea("ohbgerro")
 !Dead("ohbgerro")
 ~ THEN DO ~ClearAllActions()
-SetGlobal("ohb_finale_arena","oh8200",5)
+SetGlobal("ohb_finale_arena","ZB8200",5)
 GiveItemCreate("potn18",LastTalkedToBy,1,0,0)
 GiveItemCreate("potn14",LastTalkedToBy,1,0,0)
-EscapeAreaMove("oh8100",4015,3145,W)
+EscapeAreaMove("ZB8100",4015,3145,W)
 ~ EXTERN ~OHBGERRO~ 38
 END
 

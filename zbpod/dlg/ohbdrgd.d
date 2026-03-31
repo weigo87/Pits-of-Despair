@@ -7,24 +7,24 @@
 
 BEGIN ~OHBDRGD~
 
-IF ~  GlobalGT("OHB_GCENTRY","OH8100",0)
+IF ~  GlobalGT("OHB_GCENTRY","ZB8100",0)
 ~ THEN BEGIN 0
   SAY @927 /* Captain said you can pass. Go on, he's waiting for you. */
   IF ~~ THEN EXIT
 END
 
-IF ~  Global("OHB_DRNOSER","OH8100",0)
+IF ~  Global("OHB_DRNOSER","ZB8100",0)
 HasItemEquiped("ohbnoshu",LastTalkedToBy)
 ~ THEN BEGIN 1
   SAY @928 /* You must be one of the new Nosers. Come on in. They'll be expecting you upstairs. */
   IF ~~ THEN DO ~AddJournalEntry(101244,QUEST)
-SetGlobal("OHB_DRNOSER","OH8100",1)
+SetGlobal("OHB_DRNOSER","ZB8100",1)
 Unlock("door0011")
 ActionOverride(LastTalkedToBy(Myself),OpenDoor("door0011"))
 ~ EXIT
 END
 
-IF ~  Global("OHB_DRNOSER","OH8100",1)
+IF ~  Global("OHB_DRNOSER","ZB8100",1)
 HasItemEquiped("ohbnoshu",LastTalkedToBy)
 ~ THEN BEGIN 2
   SAY @929 /* You again. I see they're keeping you busy up there. Come on in. */

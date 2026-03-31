@@ -1,5 +1,5 @@
 IF
-	AreaCheck("OH8100")  // TBP2 - Staging Area Map
+	AreaCheck("ZB8100")  // TBP2 - Staging Area Map
 	Global("OHB_final_restock","GLOBAL",1)
 	AttackedBy([GOODCUTOFF],DEFAULT)
 	Global("OHB_telout","LOCALS",0)
@@ -12,11 +12,11 @@ THEN
 END
 
 IF
-	AreaCheck("OH8100")  // TBP2 - Staging Area Map
+	AreaCheck("ZB8100")  // TBP2 - Staging Area Map
 	Global("ohb_plot_cutscene","global",0)
 	Global("OHB_INTERVIEW","GLOBAL",1)
 	!Global("OHB_START_BATTLE","GLOBAL",1)
-	Range([PC],12)
+	Range([PC],30)
 	See([PC])
 THEN
 	RESPONSE #100
@@ -29,7 +29,7 @@ THEN
 END
 
 IF
-	AreaCheck("OH8100")  // TBP2 - Staging Area Map
+	AreaCheck("ZB8100")  // TBP2 - Staging Area Map
 	Global("OHB_ELLRA_RUNE","GLOBAL",2)
 	Global("OHB_SRING","LOCALS",0)
 THEN
