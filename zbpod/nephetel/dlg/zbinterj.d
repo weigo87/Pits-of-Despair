@@ -125,3 +125,36 @@ INTERJECT_COPY_TRANS ZBNEPH zbnephstudyring ZBPOSTMATCH5.2
   == DORNJ IF ~InParty("DORN") InMyArea("DORN") !StateCheck("DORN",CD_STATE_NOTVALID)~ THEN @335 /* Perhaps we should simply kill her and take the ring for ourselves. */
 END
 ///
+
+/// Neph Join Interjections ///
+INTERJECT_COPY_TRANS ZBNEPH ZBNEPHCOWLEDWIZARDS ZBNEPHFIRSTJOINSINTERJECT1
+  == HAERDAJ IF ~InParty("HaerDalis") InMyArea("HaerDalis") !StateCheck("HaerDalis",CD_STATE_NOTVALID)~ THEN @356 /* We must consider ourselves fortunate to find another exotic bird to join our eccentric menagerie. */
+  == EDWINJ IF ~InParty("EDWIN") InMyArea("EDWIN") !StateCheck("EDWIN",CD_STATE_NOTVALID)~ THEN @357 /* Eh? No, no this will not do at all. I will not tolerate spies within my company. I will be keeping an eye on you, tiefling. (Or… perhaps both eyes). */
+  == ANOMENJ IF ~InParty("ANOMEN") InMyArea("ANOMEN") !StateCheck("ANOMEN",CD_STATE_NOTVALID)~ THEN @358 /* Taking in every fantastical stray you find is going to end poorly for you, <CHARNAME>. */
+  == MINSCJ IF ~InParty("Minsc") InMyArea("Minsc") !StateCheck("Minsc",CD_STATE_NOTVALID)~ THEN @359 /* Huzzah! Boo was worried you would not be coming with us. I think he likes you. */
+  == AERIEJ IF ~InParty("AERIE") InMyArea("AERIE") !StateCheck("AERIE",CD_STATE_NOTVALID)~ THEN @360 /* W-welcome. I hope you like c-crazy adventures, that’s the only kind we seem to go on. */
+  == KELDORJ IF ~InParty("Keldorn") InMyArea("Keldorn") !StateCheck("Keldorn",CD_STATE_NOTVALID)~ THEN @361 /* I’ll be keeping a close eye on you, planeling. */
+  == YOSHJ IF ~InParty("Yoshimo") InMyArea("Yoshimo") !StateCheck("Yoshimo",CD_STATE_NOTVALID)~ THEN @362 /* And here I thought this group had reached its limit for talented rogues. Ah, no matter. More competition is always welcome! */
+  == WILSONJ IF ~InParty("WILSON") InMyArea("WILSON") !StateCheck("WILSON",CD_STATE_NOTVALID)~ THEN @363 /* *growl* *snort* */
+END
+INTERJECT_COPY_TRANS ZBNEPH ZBNEPHILLBEBYYOURSIDE ZBNEPHFIRSTJOINSINTERJECT2
+  == HAERDAJ IF ~InParty("HaerDalis") InMyArea("HaerDalis") !StateCheck("HaerDalis",CD_STATE_NOTVALID)~ THEN @356 /* We must consider ourselves fortunate to find another exotic bird to join our eccentric menagerie. */
+  == EDWINJ IF ~InParty("EDWIN") InMyArea("EDWIN") !StateCheck("EDWIN",CD_STATE_NOTVALID)~ THEN @357 /* Eh? No, no this will not do at all. I will not tolerate spies within my company. I will be keeping an eye on you, tiefling. (Or… perhaps both eyes). */
+  == ANOMENJ IF ~InParty("ANOMEN") InMyArea("ANOMEN") !StateCheck("ANOMEN",CD_STATE_NOTVALID)~ THEN @358 /* Taking in every fantastical stray you find is going to end poorly for you, <CHARNAME>. */
+  == MINSCJ IF ~InParty("Minsc") InMyArea("Minsc") !StateCheck("Minsc",CD_STATE_NOTVALID)~ THEN @359 /* Huzzah! Boo was worried you would not be coming with us. I think he likes you. */
+  == AERIEJ IF ~InParty("AERIE") InMyArea("AERIE") !StateCheck("AERIE",CD_STATE_NOTVALID)~ THEN @360 /* W-welcome. I hope you like c-crazy adventures, that’s the only kind we seem to go on. */
+  == KELDORJ IF ~InParty("Keldorn") InMyArea("Keldorn") !StateCheck("Keldorn",CD_STATE_NOTVALID)~ THEN @361 /* I’ll be keeping a close eye on you, planeling. */
+  == YOSHJ IF ~InParty("Yoshimo") InMyArea("Yoshimo") !StateCheck("Yoshimo",CD_STATE_NOTVALID)~ THEN @362 /* And here I thought this group had reached its limit for talented rogues. Ah, no matter. More competition is always welcome! */
+  == WILSONJ IF ~InParty("WILSON") InMyArea("WILSON") !StateCheck("WILSON",CD_STATE_NOTVALID)~ THEN @363 /* *growl* *snort* */
+END
+INTERJECT_COPY_TRANS ZBNEPH ZBNEPHONTOTHEROAD ZBNEPHFIRSTJOINSINTERJECT3
+  == HAERDAJ IF ~InParty("HaerDalis") InMyArea("HaerDalis") !StateCheck("HaerDalis",CD_STATE_NOTVALID)~ THEN @356 /* We must consider ourselves fortunate to find another exotic bird to join our eccentric menagerie. */
+  == EDWINJ IF ~InParty("EDWIN") InMyArea("EDWIN") !StateCheck("EDWIN",CD_STATE_NOTVALID)~ THEN @357 /* Eh? No, no this will not do at all. I will not tolerate spies within my company. I will be keeping an eye on you, tiefling. (Or… perhaps both eyes). */
+  == ANOMENJ IF ~InParty("ANOMEN") InMyArea("ANOMEN") !StateCheck("ANOMEN",CD_STATE_NOTVALID)~ THEN @358 /* Taking in every fantastical stray you find is going to end poorly for you, <CHARNAME>. */
+  == MINSCJ IF ~InParty("Minsc") InMyArea("Minsc") !StateCheck("Minsc",CD_STATE_NOTVALID)~ THEN @359 /* Huzzah! Boo was worried you would not be coming with us. I think he likes you. */
+  == AERIEJ IF ~InParty("AERIE") InMyArea("AERIE") !StateCheck("AERIE",CD_STATE_NOTVALID)~ THEN @360 /* W-welcome. I hope you like c-crazy adventures, that’s the only kind we seem to go on. */
+  == KELDORJ IF ~InParty("Keldorn") InMyArea("Keldorn") !StateCheck("Keldorn",CD_STATE_NOTVALID)~ THEN @361 /* I’ll be keeping a close eye on you, planeling. */
+  == YOSHJ IF ~InParty("Yoshimo") InMyArea("Yoshimo") !StateCheck("Yoshimo",CD_STATE_NOTVALID)~ THEN @362 /* And here I thought this group had reached its limit for talented rogues. Ah, no matter. More competition is always welcome! */
+  == WILSONJ IF ~InParty("WILSON") InMyArea("WILSON") !StateCheck("WILSON",CD_STATE_NOTVALID)~ THEN @363 /* *growl* *snort* */
+END
+///

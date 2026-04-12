@@ -329,22 +329,24 @@ END
 
 // Copper Coronet
 IF ~Global("ZB_NEPH_ESCAPE_1","GLOBAL",3)~ 26
-  SAY @92 /* Here we are, for better or worse, released from the pits. I guess this is where we part ways? */
-  IF ~~ THEN REPLY @93 /* Yes, we must go, we have business to attend to. */ GOTO ZBNEPHCOPPERCORONET
-  IF ~Global("ZB_NEPH_WHERE_GO","GLOBAL",0)~ THEN REPLY @94 /* What about you Nephetel, where will you go? */ DO ~SetGlobal("ZB_NEPH_WHERE_GO","GLOBAL",1)~ GOTO ZBNEPHWHEREGOEXPLAIN
-  IF ~~ THEN REPLY @95 /* You have been very helpful, perhaps you could join us on our quest? */ GOTO ZBNEPHIWOULDBEHAPPY
-  IF ~~ THEN REPLY @96 /* You are at the end of your usefulness, thief. */ DO ~IncrementGlobal("ZB_NEPHY_FRIEND","GLOBAL",-1)~ GOTO ZBNEPHEXIT
+  SAY @92 /* Here we are, for better or worse, released from the pits. Uh… where is here, exactly? */
+  IF ~~ THEN REPLY @93 /* We’re in Trademeet, east of Athkatla. */ /* We’re in Trademeet, east of Athkatla. */ GOTO ZBNEPHCLOSERTOCITY
+  IF ~~ THEN REPLY @94 /* Figure it out. I have to go. */ /* Figure it out. I have to go. */ GOTO ZBNEPHHOLDONFORAMOMENT
+  IF ~~ THEN REPLY @95 /* I don’t care. You are at the end of your usefulness, thief. */ DO ~IncrementGlobal("ZB_NEPHY_FRIEND","GLOBAL",-1)~ GOTO ZBNEPHCOPPERCORONET
 END
 
-IF ~~ ZBNEPHWHEREGOEXPLAIN
-  SAY @97 /* Before being lured into the intrigue of the pits, I was on a mission to find a particular tome of importance. I will continue to search for it. */
-  IF ~~ THEN REPLY @93 /* Yes, we must go, we have business to attend to. */ GOTO ZBNEPHCOPPERCORONET
-  IF ~~ THEN REPLY @95 /* You have been very helpful, perhaps you could join us on our quest? */ GOTO ZBNEPHIWOULDBEHAPPY
-  IF ~~ THEN REPLY @96 /* You are at the end of your usefulness, thief. */ DO ~IncrementGlobal("ZB_NEPHY_FRIEND","GLOBAL",-1)~ GOTO ZBNEPHEXIT
+IF ~~ ZBNEPHCLOSERTOCITY
+  SAY @96 /* You couldn’t have been captured somewhere a bit closer to the city? No matter. */
+  IF ~~ GOTO ZBNEPHWHEREGOEXPLAIN
+END
+
+IF ~~ ZBNEPHHOLDONFORAMOMENT
+  SAY @97 /* Right. Yes, okay. Just… just hold on a moment, will you? */
+  IF ~~ GOTO ZBNEPHWHEREGOEXPLAIN
 END
 
 IF ~~ ZBNEPHCOPPERCORONET
-  SAY @98 /* Very well, I myself have a mission I must attend to. If you ever need my assistance seek me out at the Copper Coronet in Athkatla. Safe travels. */
+  SAY @98 /* I see that you’re intent to distance yourself. Well, no matter. I will make my way to the city and attend to my own business. Should you decide to lighten up a bit, maybe you’ll run into me in a tavern. */
   IF ~~ DO ~
     SetGlobal("ZB_NEPH_MOVE_COPPER","GLOBAL",1)
     SetGlobal("ZB_NEPH_ESCAPE_1","GLOBAL",4)
@@ -354,13 +356,15 @@ IF ~~ ZBNEPHCOPPERCORONET
     ~ EXIT
 END
 
-IF ~~ ZBNEPHIWOULDBEHAPPY
-  SAY @99 /* I would be happy to, however I need to inform you that I have a mission to find a tome for my employer. If in our travels we come across it I must deliver it to him. */
-  IF ~~ DO ~SetGlobal("ZB_NEPH_ESCAPE_1","GLOBAL",4) SetGlobal("ZB_NEPH_JOINS","GLOBAL",1) JoinParty()~ EXIT
+IF ~~ ZBNEPHWHEREGOEXPLAIN
+  SAY @344 /* I have my own mission here in Amn. It’s why I chose you to travel with me… not that I don’t appreciate your company. I’ve been employed to find an item of some importance, and it’s about time I continue searching for it. The pits were a rather irritating distraction */
+  IF ~~ THEN REPLY @345 /* Would you join me? Perhaps I can assist you on your mission if you help me with mine. */ GOTO ZBNEPHIWOULDBEGLADTO
+  IF ~Global("ZB_NEPH_WHODOYOUWORKFOR","GLOBAL",0)~ THEN REPLY @346 /* Who is your employer? */ DO ~SetGlobal("ZB_NEPH_WHODOYOUWORKFOR","GLOBAL",1)~ GOTO ZBNEPHICANTTELLYOUTHAT
+  IF ~~ THEN REPLY @347 /* Well, good luck with that. */ DO ~IncrementGlobal("ZB_NEPHY_FRIEND","GLOBAL",-1)~ GOTO ZBNEPHEXIT
 END
 
 IF ~~ ZBNEPHEXIT
-  SAY @100 /* You seem intent to distance yourself. I know my way out. */
+  SAY @100 /* Right, thanks. I suppose I’ll make my way to Athkatla. Perhaps I’ll see you there at some point. */
   IF ~~ DO ~
     SetGlobal("ZB_NEPH_MOVE_COPPER","GLOBAL",1)
     SetGlobal("ZB_NEPH_ESCAPE_1","GLOBAL",4)
@@ -368,51 +372,88 @@ IF ~~ ZBNEPHEXIT
     StartCutSceneMode()
     StartCutScene("zbnephm")
     ~ EXIT
+END
+
+IF ~~ ZBNEPHICANTTELLYOUTHAT
+  SAY @348 /* Unfortunately, I can’t divulge that information. Magical business, you see. Some folks value their privacy far too much. */
+  IF ~~ GOTO ZBNEPHWHEREGOEXPLAIN
+END
+
+IF ~~ ZBNEPHIWOULDBEGLADTO
+  SAY @99 /* I’d be glad to. In fact, I was hoping that you would say that. Unfortunately there is little that I can say on my search for now, but I will let you know when that changes.
+ */ /* I’d be glad to. In fact, I was hoping that you would say that. Unfortunately there is little that I can say on my search for now, but I will let you know when that changes. */
+    =
+  @349 /* What about you? What is your purpose here in Amn? */
+  IF ~~ THEN REPLY @350 /* I need to rescue my friend Imoen. She has been captured and imprisoned somewhere by the Cowled Wizards, and I am intent on finding her. */ GOTO ZBNEPHCOWLEDWIZARDS
+  IF ~~ THEN REPLY @351 /* Revenge on the mad wizard who brought me here. His name is Irenicus, and I’ll stop at nothing to hunt him down. */ GOTO ZBNEPHILLBEBYYOURSIDE
+  IF ~~ THEN REPLY @352 /* Never mind that. Let’s just go. */ GOTO ZBNEPHONTOTHEROAD
+END
+
+IF ~~ ZBNEPHCOWLEDWIZARDS
+  SAY @353 /* Well, let’s go give the Cowled Wizards the same treatment we just gave Dennaton and get your friend out of wherever they have her holed up. */
+  IF ~~ DO ~SetGlobal("ZB_NEPH_ESCAPE_1","GLOBAL",4) SetGlobal("ZB_NEPH_JOINS","GLOBAL",1) MakeGlobal() JoinParty()~ EXIT
+END
+
+IF ~~ ZBNEPHILLBEBYYOURSIDE
+  SAY @354 /* I’m all too familiar with the type. Well, I’ll be by your side for as long as you’ll have me, I give you that. */
+  IF ~~ DO ~SetGlobal("ZB_NEPH_ESCAPE_1","GLOBAL",4) SetGlobal("ZB_NEPH_JOINS","GLOBAL",1) IncrementGlobal("ZB_NEPHY_FRIEND","GLOBAL",-1) MakeGlobal() JoinParty()~ EXIT
+END
+
+IF ~~ ZBNEPHONTOTHEROAD
+  SAY @355 /* As you say. On to the road, then? */
+  IF ~~ DO ~SetGlobal("ZB_NEPH_ESCAPE_1","GLOBAL",4) SetGlobal("ZB_NEPH_JOINS","GLOBAL",1) MakeGlobal() JoinParty()~ EXIT
 END
 
 // Copper Cornet
 
 IF ~AreaCheck("AR0406") GlobalLT("ZB_NEPHY_FRIEND","GLOBAL",0) Global("ZB_NEPH_COPPERCORENT","GLOBAL",1)~ THEN BEGIN OHHAIMARK
   SAY @101 /* Oh look who it is, the Bhaalspawn. Have you found what you are looking for, you nearsighted gibberling? */
-  IF ~~ THEN REPLY @102 /* You know what Nephetel, I was a bit rude before. I apologize. */ DO ~IncrementGlobal("ZB_NEPHY_FRIEND","GLOBAL",1)~ GOTO ZBNEPHREDEMPTION
-  IF ~~ THEN REPLY @103 /* No need to be rude. */ GOTO ZBNPEHNEVERFORGIVE
-  IF ~~ THEN REPLY @104 /* You are the rude gibberling. */ GOTO ZBNPEHNEVERFORGIVE
+  IF ~~ THEN REPLY @102 /* I apologize for my rudeness before, Nephetel. */ DO ~IncrementGlobal("ZB_NEPHY_FRIEND","GLOBAL",1)~ GOTO ZBNEPHREDEMPTION
+  IF ~~ THEN REPLY @103 /* No need to be rude, I’m just passing by. */ GOTO ZBNPEHNEVERFORGIVE
+  IF ~~ THEN REPLY @104 /* Excuse me? You’re the rude gibberling. */ GOTO ZBNPEHNEVERFORGIVE
 END
 
 IF ~~ ZBNEPHFORGIVE
-  SAY @105 /* Good. Now do you want to talk about traveling together? */
+  SAY @105 /* I’ll consider it a step in the right direction. Now, was there something you wanted? */
   IF ~~ GOTO ZBNEPHREDEMPTION
 END
 
 IF ~~ ZBNPEHNEVERFORGIVE
-  SAY @106 /* I'll decide what is rude, that is MY prerogative. */
-  IF ~~ THEN REPLY @107 /* My apologies. I must have stepped in it now. I am sorry if I offended you. */ GOTO ZBNEPHREDEMPTION
-  IF ~~ THEN REPLY @108 /* My oh my, what a bitch. */ DO ~IncrementGlobal("ZB_NEPHY_FRIEND","GLOBAL",-1)~ GOTO ZBNEPHFUCKYOU
-END
-
-IF ~~ ZBNEPHFUCKYOU
-  SAY @109 /* So be it, have it your way and I will have it mine. */
-  IF ~~ DO ~
-  ApplySpell(Myself,WIZARD_INVISIBILITY)
-  Wait(1)
-  EscapeArea()~ EXIT
+  SAY @106 /* I’ll decide what rude is, that is MY prerogative. */
+  IF ~~ THEN REPLY @107 /* It seems that I’ve stepped in it now. I am sorry if I offended you. */ GOTO ZBNEPHREDEMPTION
+  IF ~~ THEN REPLY @108 /* Whatever. I’m leaving. */ DO ~IncrementGlobal("ZB_NEPHY_FRIEND","GLOBAL",-1)~ EXIT
 END
 
 IF ~~ ZBNEPHREDEMPTION
-  SAY @110 /* Apology accepted. Now, what are you here for? Have you come to your senses and want to travel together? */
-  IF ~~ THEN REPLY @111 /* Yes, I must admit I missed you. Will you join us on our quest? */ DO ~IncrementGlobal("ZB_NEPHY_FRIEND","GLOBAL",1)~ GOTO ZBNEPHREALLYJOIN
-  IF ~~ THEN REPLY @112 /* I wanted to see if you would join us now. We could use your help. */ GOTO ZBNEPHREALLYJOIN
-  IF ~~ THEN REPLY @113 /* I need to go. Goodbye. */ EXIT
+  SAY @110 /* Apology accepted. Is there something you wanted? Perhaps you’re looking for my company in your group. */
+  IF ~~ THEN REPLY @111 /* Yes, Nephetel. I’d like you to join us on our quest. */ /* Indeed, that’s why I’m here. Please, join the party, Nephetel. */ DO ~IncrementGlobal("ZB_NEPHY_FRIEND","GLOBAL",1)~ GOTO ZBNEPHREMINDYOULATERMISSION
+  IF ~~ THEN REPLY @113 /* Nope, just stopping by to say hello, and now I’ve said it. Goodbye. */ EXIT
 END
 
 IF ~AreaCheck("AR0406") GlobalGT("ZB_NEPHY_FRIEND","GLOBAL",-1) Global("ZB_NEPH_COPPERCORENT","GLOBAL",1)~ ZBNEPHFREIND
-  SAY @114 /* Well hello there <CHARNAME>, you seem to be all in one piece, how can I help you? */
-  IF ~~ THEN REPLY @111 /* Yes, I must admit I missed you. Will you join us on our quest? */ DO ~IncrementGlobal("ZB_NEPHY_FRIEND","GLOBAL",1)~ GOTO ZBNEPHREALLYJOIN
-  IF ~~ THEN REPLY @112 /* I wanted to see if you would join us now. We could use your help. */ GOTO ZBNEPHREALLYJOIN
-  IF ~~ THEN REPLY @113 /* I need to go. Goodbye. */ EXIT
+  SAY @114 /* Well, hello there. I’m genuinely pleased to see you still in one piece. Are you looking for my company in your group? */
+  IF ~~ THEN REPLY @111 /* Yes, Nephetel. I’d like you to join us on our quest. */ DO ~IncrementGlobal("ZB_NEPHY_FRIEND","GLOBAL",1)~ GOTO ZBNEPHREMINDYOULATERMISSION
+  IF ~~ THEN REPLY @113 /* Nope, just stopping by to say hello, and now I’ve said it. Goodbye. */ EXIT
 END
 
-IF ~~ ZBNEPHREALLYJOIN
-  SAY @115 /* Oh, I'll happily join your merry band. */
-  IF ~~ DO ~SetGlobal("ZB_NEPH_JOINS","GLOBAL",1) JoinParty()~ EXIT
+IF ~~ ZBNEPHREMINDYOULATERMISSION
+  SAY @364 /* Good! I don’t doubt that you’ll make interesting company. I’ll remind you—I have my own mission here in Amn. I’ll let you know when I have a lead. */
+  IF ~~ THEN REPLY @365 /* Very well. My own mission is focused on finding my friend Imoen, who was taken by the Cowled Wizards here in Athkatla. */ GOTO ZBNEPHJOKECAPTUREJOIN
+  IF ~~ THEN REPLY @366 /* Alright, then. So long as you help me track down the mad mage I’m hunting. Irenicus is his name, and I owe him a great debt of pain. */ GOTO ZBNEPHKILLTHEWIZARDJOIN
+  IF ~~ THEN REPLY @367 /* Great, let’s go. */ GOTO ZBNEPHLEADEROFFEWWORDSJOIN
+END
+
+IF ~~ ZBNEPHJOKECAPTUREJOIN
+  SAY @115 /* You and yours seem to get captured often, huh? Well, I guess I’m not one to talk. Shall we get moving, then? */
+  IF ~~ DO ~SetGlobal("ZB_NEPH_JOINS","GLOBAL",1) MakeGlobal() JoinParty()~ EXIT
+END
+
+IF ~~ ZBNEPHKILLTHEWIZARDJOIN
+  SAY @368 /* I’ll be sure to help deliver it, then. I’ve spent long enough around wizards to not have any qualms with sticking a knife in one deserving it. Let’s go. */
+  IF ~~ DO ~SetGlobal("ZB_NEPH_JOINS","GLOBAL",1) MakeGlobal() JoinParty()~ EXIT
+END
+
+IF ~~ ZBNEPHLEADEROFFEWWORDSJOIN
+  SAY @369 /* After you, *leader*. */
+  IF ~~ DO ~SetGlobal("ZB_NEPH_JOINS","GLOBAL",1) MakeGlobal() JoinParty()~ EXIT
 END
