@@ -1,0 +1,13 @@
+IF
+  True()
+THEN
+  RESPONSE #100
+    CutSceneId(Player1)
+    ClearActions("zbneph")
+    SetGlobal("ZB_NEPH_MOVE_SHADOW_THIEF", "GLOBAL",2)
+    SetGlobal("ZB_NEPH_SHADOW_THIEF_GUILDHALL", "GLOBAL", 1)
+    ApplySpell("zbneph", WIZARD_INVISIBILITY)
+    SmallWait(25)
+    MoveGlobal("ar0305","zbneph",[425.616])
+    EndCutSceneMode()
+END

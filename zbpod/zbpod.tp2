@@ -114,7 +114,7 @@ UNLESS ~zbeshpeu~
 COMPILE EVALUATE_BUFFER ~%MOD_FOLDER%/crossmod/~
   USING ~%MOD_FOLDER%/lang/%LANGUAGE%/crossmod.tra~
 
-// // Copy vvcs
+// Copy vvcs
 COPY ~%MOD_FOLDER%/vvc~ ~override~
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////
