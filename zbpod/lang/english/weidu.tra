@@ -922,6 +922,21 @@ Requires:
 Weight: 2~
 @11082 = ~Defenses Pierced~
 
+@11090 = ~Catacomb~
+@11091 = ~Catacomb description placeholder
+
+STATISTICS:
+
+Charge abilities:
+- Summon Servant of Orcus (1/day)
+  The servant is an undead knight, 15th level fighter and 9th level necromancer.  It will fight for the wielder until slain or until two turns have passed.
+- Animate Dead (1/day)
+  This casts the Animate Dead spell as a 16th level necromancer.
+
+Weight: 2~
+@11092 = ~Servant of Orcus~
+
+
 // Creatures
 
 @15000 = ~Deathslither~ // placeholder

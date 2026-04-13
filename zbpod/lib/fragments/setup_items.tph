@@ -446,3 +446,14 @@ COPY_EXISTING ~zbskinrb.itm~ ~override~
   SAY IDENTIFIED_DESC @10291
 
 
+// Catacomb
+
+COPY ~%MOD_FOLDER%/items/catacomb~ ~override~
+COPY_EXISTING ~zbcatcom.itm~ ~override~
+  SAY NAME2 @11090
+  SAY IDENTIFIED_DESC @11091
+COPY_EXISTING ~zbcatcom.cre~ ~override~
+  SAY NAME1 @11092
+  SAY NAME2 @11092
+
+
