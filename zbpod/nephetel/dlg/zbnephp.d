@@ -7,12 +7,14 @@ IF ~Global("ZB_NEPH_JOINS","GLOBAL",1) Global("ZB_NEPH_LEFT","GLOBAL",0)~ ZBNEPH
     SetGlobal("ZB_NEPH_MOVE_COPPER","GLOBAL",1)
     SetGlobal("ZB_NEPH_ESCAPE_1","GLOBAL",4)
     SetGlobal("ZB_NEPH_LEFT","GLOBAL",1)
+    MakeGlobal()
     StartCutSceneMode()
     StartCutScene("zbnephm")~ EXIT
   IF ~Global("ShadowWork","GLOBAL",1)~ THEN REPLY @370 /* For now, yes. Head to the Shadow Thief guild in the docks. I’ll meet you there should I require your help again. */ DO ~
     SetGlobal("ZB_NEPH_MOVE_SHADOW_THIEF","GLOBAL",1)
     SetGlobal("ZB_NEPH_ESCAPE_1","GLOBAL",4)
     SetGlobal("ZB_NEPH_LEFT","GLOBAL",1)
+    MakeGlobal()
     StartCutSceneMode()
     StartCutScene("zbnephmt")~ EXIT
   IF ~~ THEN REPLY @118 /* I don't know what I was thinking, of course I want you to stay. */ EXIT
