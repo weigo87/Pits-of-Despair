@@ -1,3 +1,4 @@
 zbpod/**/*bcs
 .envrc
 .direnv
+.trash
