@@ -266,8 +266,19 @@ COPY_EXISTING ~ar3027.are~ ~override~
   LPF ALTER_AREA_ACTOR STR_VAR actor_name = ~Demi-Lich~ cre_file = ~zbademi1~ END // Replace demilich with new version in wk
 
 // Add areas and supporting files
+
+//zb0700
+//missing swamp ovl tiles for animation
+ACTION_BASH_FOR ~%MOD_FOLDER%/area/ovltis/~ ~.*\.tis$~ BEGIN
+  ACTION_IF !FILE_EXISTS_IN_GAME ~%BASH_FOR_FILE%~ BEGIN
+  	COPY ~%BASH_FOR_FILESPEC%~ ~override~
+  END
+END
+COMPILE ~%MOD_FOLDER%/area/zb0700/zb0700.baf~
 COPY ~%MOD_FOLDER%/area/zb0700/common/~ ~override~
 COPY ~%MOD_FOLDER%/area/zb0700/ee/~ ~override~
 COPY ~%MOD_FOLDER%/area/zb0700/areabam/~ ~override~
+
+//zb0701 zb0702
 COPY ~%MOD_FOLDER%/area/zb0701/~ ~override~
 COPY ~%MOD_FOLDER%/area/zb0702/~ ~override~

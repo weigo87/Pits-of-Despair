@@ -1,0 +1,13 @@
+IF
+    Global("zb0700_first_enter","MYAREA",0)
+THEN
+    RESPONSE #100
+        StartCutSceneMode()
+        Wait(1)
+        MoveViewPoint([3900.320],BD_QUICK)
+        Wait(4)
+        ActionOverride(Player1,MoveViewObject(Myself,INSTANT))
+        EndCutSceneMode()
+        SetGlobal("zb0700_first_enter","MYAREA",1)
+END
+
